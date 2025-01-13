@@ -1,0 +1,35 @@
+:root {
+  /* panel */
+  --panel-background-color: #1e1e2e;
+  --panel-color: #d0d0d0;
+  --panel-border-color: #44475a77;
+
+/* Features buttons */
+  --button-color: #007bff;
+  --button-background-color: #44475a77;
+  --button-border-color: #44475a77;
+  --button-hover-color: #ffffff;
+  --button-hover-background-color: #0056b3;
+  --button-active-color: #ffffff;
+  --button-active-background-color: #0056b3;
+
+/* toggle buttons */
+  --circle-toggle: #ffffff;
+  --active-toggle: #007bff;
+  --slider-toggle: #000000;
+  
+  --overlay-bottom-gradient: linear-gradient(
+    180deg, /* Gradient direction: left to right */
+    rgba(0, 0, 0, 0) 25%,       /* Start with 100% of the first color */
+    rgba(0, 0, 0, 0.50) 50%,      /* The first color takes up 80% */
+    rgba(0, 0, 0, 0.75) 75%,      /* Smooth transition starts here */
+    rgba(0, 0, 0, 1) 100%      /* Ends with the second color */
+  );
+
+
+  --access-button-background-color: #d0d0d0;
+  --access-button-color: #007bff;
+  --access-button-hover-background-color: #007bff;
+  --access-button-hover-color: #ffffff;
+
+}

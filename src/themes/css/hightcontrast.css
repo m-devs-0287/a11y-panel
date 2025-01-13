@@ -1,0 +1,35 @@
+:root {
+  /* Panel */
+  --panel-background-color: #000000; /* Black background */
+  --panel-color: #ffffff; /* White text for high contrast */
+  --panel-border-color: #ffffff; /* White border for better visibility */
+
+  /* Features buttons */
+  --button-color: #000000; /* Black text */
+  --button-background-color: #ffffff; /* White button background */
+  --button-border-color: #ffffff; /* White border */
+  --button-hover-color: #000000; /* Black text on hover */
+  --button-hover-background-color: #ffff00; /* Bright yellow background on hover */
+  --button-active-color: #000000; /* Black text on active */
+  --button-active-background-color: #00ff00; /* Bright green background on active */
+
+  /* Toggle buttons */
+  --circle-toggle: #000000; /* Black circle */
+  --active-toggle: #ff0000; /* Bright red for active state */
+  --slider-toggle: #ffffff; /* White slider background */
+
+  /* Overlay bottom gradient */
+  --overlay-bottom-gradient: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 25%, /* Transparent black at the top */
+    rgba(0, 0, 0, 0.50) 50%, /* Semi-transparent black */
+    rgba(0, 0, 0, 0.75) 75%, /* More opaque black */
+    rgba(0, 0, 0, 1) 100% /* Fully opaque black at the bottom */
+  );
+
+  /* Access button */
+  --access-button-background-color: #000000; /* Black background */
+  --access-button-color: #ffffff; /* White text */
+  --access-button-hover-background-color: #ffff00; /* Bright yellow background on hover */
+  --access-button-hover-color: #000000; /* Black text on hover */
+}

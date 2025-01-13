@@ -1,0 +1,74 @@
+
+
+
+/* Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  color: #333;
+  /* transition: font-size 0.3s ease;  */
+
+}
+
+body.dark-mode {
+  background-color: #1e1e2e; /* Dark background */
+  color: #e0e0e0; /* Light text for dark mode */
+}
+
+header {
+  background-color: #007acc;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+header.dark-mode {
+  background-color: #1a1a2e; /* Darker shade for dark mode header */
+}
+
+header h1 {
+  margin: 0;
+}
+
+main {
+  padding: 2rem;
+}
+
+main.dark-mode {
+  background-color: #1e1e1e; /* Darker content area */
+}
+
+.footer {
+  background-color: #007acc;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer.dark-mode {
+  background-color: #1a1a2e; /* Darker footer background for dark mode */
+}
+
+/* Floating Container Styles */
+#floating-container {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  z-index: 1000;
+  background: #000;
+  border-radius: 5px;
+  border: 1px solid red;
+  color: white;
+}
+
+#floating-container.dark-mode {
+  background: #1e1e1e; /* Darker background for floating container */
+  border: 1px solid #444; /* Subtle border for dark mode */
+}
+
+

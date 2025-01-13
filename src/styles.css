@@ -1,0 +1,544 @@
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../fonts/OpenDyslexic3-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'OpenDyslexic-Bold';
+  src: url('../fonts/OpenDyslexic3-Bold.ttf') format('truetype');
+}
+
+/* Default Dyslexia Font */
+.dyslexia-font p,
+.dyslexia-font h1,
+.dyslexia-font h2,
+.dyslexia-font h3,
+.dyslexia-font h4,
+.dyslexia-font h5,
+.dyslexia-font h6,
+.dyslexia-font span,
+.dyslexia-font li,
+.dyslexia-font a {
+  font-family: 'OpenDyslexic', sans-serif !important;
+  transition: font-family 0.3s ease-in-out;
+}
+
+/* Bold Dyslexia Font */
+.dyslexia-bold p,
+.dyslexia-bold h1,
+.dyslexia-bold h2,
+.dyslexia-bold h3,
+.dyslexia-bold h4,
+.dyslexia-bold h5,
+.dyslexia-bold h6,
+.dyslexia-bold span,
+.dyslexia-bold li,
+.dyslexia-bold a {
+  font-family: 'OpenDyslexic-Bold', sans-serif !important;
+  transition: font-family 0.3s ease-in-out;
+}
+
+/* this will protect the panel from being affected */
+.no-feature {
+  font-size: initial !important; 
+  letter-spacing: normal !important; 
+  font-weight: normal !important; 
+}
+
+/* variables
+------------------------------------------------------------------------------*/
+:root {
+  /* Panel */
+  --panel-background-color: #ffffff;
+  --panel-color: #2e2e2e;
+  --panel-border-color: #e0e0e0;
+
+  /* Features buttons */
+  --button-color: #2e2e2e;
+  --button-background-color: #f0f0f0;
+  --button-border-color: #d0d0d0;
+  --button-hover-color: #ffffff;
+  --button-hover-background-color: #007bff;
+  --button-active-color: #ffffff;
+  --button-active-background-color: #007bff;
+
+  /* Toggle buttons */
+  --circle-toggle: #ffffff;
+  --active-toggle: #007bff;
+  --slider-toggle: #d0d0d0;
+
+  --access-button-background-color: #007bff;
+
+  /* Overlay bottom gradient */
+  --overlay-bottom-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.75) 75%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+body.dark-mode {
+  /* panel */
+  --panel-background-color: #1e1e2e;
+  --panel-color: #d0d0d0;
+  --panel-border-color: #44475a77;
+
+  /* Features buttons */
+  --button-color: #007bff;
+  --button-background-color: #44475a77;
+  --button-border-color: #44475a77;
+  --button-hover-color: #ffffff;
+  --button-hover-background-color: #0056b3;
+  --button-active-color: #ffffff;
+  --button-active-background-color: #0056b3;
+
+  /* toggle buttons */
+  --circle-toggle: #ffffff;
+  --active-toggle: #007bff;
+  --slider-toggle: #000000;
+
+  --overlay-bottom-gradient: linear-gradient(
+    180deg,
+    /* Gradient direction: left to right */ rgba(0, 0, 0, 0) 25%,
+    /* Start with 100% of the first color */ rgba(0, 0, 0, 0.5) 50%,
+    /* The first color takes up 80% */ rgba(0, 0, 0, 0.75) 75%,
+    /* Smooth transition starts here */ rgba(0, 0, 0, 1) 100%
+      /* Ends with the second color */
+  );
+}
+/* accessibility open panel Styles  
+------------------------------------------------------------------------------*/
+.accessibility-open-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+  height: 34px;
+  width: 34px;
+  border-radius: 100%;
+  border: 0;
+}
+
+.accessibility-open-panel:hover {
+  background-color: var(--button-hover-color);
+}
+
+/* accessibility panel
+------------------------------------------------------------------------------*/
+#accessibility-panel {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 360px;
+  background-color: var(--panel-background-color);
+  border: 1px solid var(--panel-border-color);
+  color: var(--panel-color);
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transform: translateX(100%); /* Move off-screen to the right */
+  opacity: 0; /* Make it invisible */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+#accessibility-panel.active {
+  transform: translateX(0); /* Bring the panel back into view */
+  opacity: 1; /* Make it fully visible */
+}
+
+#accessibility-panel.left {
+  left: 20px;
+  transform: translateX(-100%);
+}
+
+/* panel layout sections
+------------------------------------------------------------------------------*/
+.content-top,
+.content-center,
+.content-bottom {
+  display: grid;
+  padding: 16px;
+}
+
+.content-top {
+  border-bottom: 1px solid var(--panel-border-color);
+}
+
+.content-bottom {
+  border-top: 1px solid var(--panel-border-color);
+}
+
+.content-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  border-bottom: 1px solid var(--panel-border-color);
+}
+
+.content-center,
+.content-bottom {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+.content-center {
+  max-height: 340px;
+  overflow-y: scroll;
+  overflow: auto;
+  scrollbar-width: none;
+  position: relative;
+  /* grid-template-columns: 1fr */
+}
+
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.bottom-overlay {
+  position: relative;
+}
+
+.bottom-overlay.active::after {
+  content: "";
+  width: 100%;
+  height: 100px;
+  background: var(--overlay-bottom-gradient);
+  position: absolute;
+  top: -100px;
+  left: 0;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 1s ease;
+}
+
+.bottom-overlay::after {
+  opacity: 0;
+}
+
+/* Close Button 
+------------------------------------------------------------------------------*/
+.accessibility-close-button {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  height: 34px;
+  width: 34px;
+  padding: 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  color: var(--panel-color);
+}
+
+.accessibility-close-button:hover {
+  color: var(--button-hover-background-color);
+}
+
+/* accessibility features button
+------------------------------------------------------------------------------*/
+
+.accessibility-feat-button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  color: var(--panel-color);
+  height: 54px;
+  line-height: 1.4;
+  border-radius: 4px;
+  background-color: var(--button-background-color);
+  border: 1px solid var(--button-border-color);
+  transition: background-color 0.3s ease;
+}
+
+.accessibility-feat-button:hover {
+  background-color: var(--button-hover-background-color);
+  color: var(--button-hover-color);
+}
+
+.accessibility-feat-button.active {
+  background-color: var(--button-active-background-color);
+  color: var(--button-active-color);
+  border: 0;
+}
+
+/* check boxes 
+------------------------------------------------------------------------------*/
+.check-boxes {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+}
+
+/* Toggle check input */
+.toggle-mode-container {
+  display: flex;
+  align-items: center;
+  text-wrap: nowrap;
+}
+/* Label for the Toggle */
+.toggle-mode {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: var(--font-size);
+  color: var(--panel-color);
+  gap: 10px;
+}
+
+/* Hidden Checkbox */
+.toggle-mode input {
+  display: none;
+}
+
+/* The Slider */
+.slider {
+  position: relative;
+  width: 40px;
+  height: 20px;
+  background-color: var(--slider-toggle);
+  border-radius: 20px;
+  transition: background-color 0.3s;
+}
+
+/* Circle in the Slider */
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background-color: var(--circle-toggle);
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: transform 0.3s;
+}
+
+/* When Checkbox is Checked */
+input:checked + .slider {
+  background-color: var(--active-toggle);
+}
+
+input:checked + .slider::before {
+  transform: translateX(20px);
+}
+
+/* language selection selections
+------------------------------------------------------------------------------*/
+.language-selector-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--panel-border-color);
+  border-radius: 5px;
+  height: 44px;
+  padding: 0 8px;
+}
+
+/* Label */
+.language-selector-label {
+  font-size: var(--font-size);
+  color: var(--panel-color);
+  margin-right: 10px;
+}
+
+/* Dropdown */
+.language-selector {
+  font-size: var(--font-size);
+  padding: 5px 10px;
+  border: 1px solid var(--panel-border-color);
+  border-radius: 5px;
+  background-color: var(--panel-background-color);
+  color: var(--panel-color);
+  cursor: pointer;
+
+  border: 0;
+}
+
+/* utils 
+------------------------------------------------------------------------------*/
+.screen-reader-only {
+  position: absolute;
+  left: 10000px;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* FLOATING CONTAINER
+------------------------------------------------------------------------------*/
+.a11y-panel-buttons-container {
+  background-color: var(--panel-background-color);
+  border: 1px solid var(--panel-border-color);
+  color: var(--panel-color);
+  /* transition: top 0.1s ease, left 0.1s ease; */
+
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.a11y-panel-buttons-container button {
+  height: 34px;
+  width: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.accessibility-drag-button {
+  background: transparent;
+  color: var(--button-color);
+}
+
+.access-panel-btn {
+  background-color: var(--access-button-background-color);
+  color: var(--access-button-color);
+}
+
+.access-panel-btn:hover {
+  background-color: var(--access-button-hover-background-color);
+  color: var(--access-button-hover-color);
+}
+
+/* HELPER CLASSES 
+------------------------------------------------------------------------------*/
+/* remove when finish*/
+.scrool-testing {
+  height: 200vh;
+  background-color: #d0d0d0;
+}
+
+/* toggle animation classes  */
+.disable-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* SKIP LINK
+------------------------------------------------------------------------------*/
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: #000;
+  color: #fff;
+  padding: 16px;
+  text-decoration: none;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+  border-radius: none;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* MODAL NAVIGATION 
+------------------------------------------------------------------------------*/
+
+.modal-navigation{
+  display: none;
+}
+
+.modal-navigation.active {
+  display: block;
+  position: fixed;
+  left: 0;
+  right: 0;
+  /* width: 760px; */
+  width: 75%;
+  margin: 0 auto;
+  padding: 1rem;
+  bottom: 30px;
+  background: var(--panel-background-color);
+  border-radius: 3px;
+  z-index: 1000;
+}
+
+.modal-navigation-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  gap: 1rem;
+  border-bottom: var(--button-border-color) 1px solid;
+  padding-bottom: 1rem;
+
+  h2 {
+    margin: 0;
+  }
+  p {
+    margin: 0;
+    color: var(--active-toggle);
+  }
+}
+
+.modal-navigation-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+  gap: 1rem;
+  border-top: var(--button-border-color) 1px solid;
+  padding-top: 1rem;
+  
+  button{
+    border: none;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    color: var(--button-color);
+  }
+}
+
+
+.modal-navigation-container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .modal-navigation-list{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    a{
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 1rem;
+      color: var(--button-color);
+      transition: background-color 0.3s ease;
+      border-radius: 3px;
+      
+      &:hover{
+        background: var(--button-hover-background-color);
+        color: var(--button-hover-color);
+      }
+    }
+
+  }
+}
