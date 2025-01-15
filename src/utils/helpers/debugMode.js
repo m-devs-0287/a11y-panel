@@ -12,18 +12,16 @@ export const initializeDebugMode = (enable) => isDebugMode = enable;
  * @param {string} message - The message to log.
  * @param {object} [context] - Optional additional context or metadata.
  */
-export const debugLog = (message) => {
+export const debugLog = (message, isLocationOn = true) => {
   if (!isDebugMode) return;
 
   // Get the caller location from stack trace
-  const stack = new Error().stack.split("\n");
-  const callerLine = stack[2]?.trim(); // Second line for the caller location
-  const timeStamp = new Date().toISOString();
-
-  // Log the message and location
+  const stack = new Error().stack.split("\n")[2].trim(); // Get the second line for the direct caller
+  const [ location ] = stack.match(/\(([^)]+)\)/) || ["Unknown location"]; // Extract file and line number
   console.log(
-    `%c[${timeStamp}] \n%c[Message]: ${message} \n%c[Location]: ${callerLine}`,
-    "color: orange;","",""
+    `%c${message}\n%c[${new Date().toISOString()}] \n${ !isLocationOn ? "[Location]" + location : "" }`,
+    "color: white; font-weight: bold;",
+    "color: orange; ",
   );
 };
 
