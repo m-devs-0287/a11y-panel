@@ -1,40 +1,51 @@
 import { stateManager } from "../../db/stateManager.js";
 
+/**
+ * Updates the state and class of a checkbox feature.
+ *
+ * @param {Object} params - Configuration for the checkbox feature.
+ * @param {string} params.dataName - The name of the feature state in IndexedDB.
+ * @param {string} params.btnId - The ID of the checkbox button.
+ * @param {HTMLElement} params.classHolder - The element to toggle the class on (default: document.body).
+ * @param {string} params.className - The class name to toggle.
+ * @param {boolean} params.reverse - Whether to reverse the active state logic.
+ * @param {boolean} params.isLoadMode - Whether the function is being called in load mode.
+ */
 export const updateCheckboxState = async ({
   dataName,
   btnId,
   classHolder = document.body,
   className,
-  reverse
+  reverse = false,
+  isLoadMode = false,
 }) => {
+  try {
+    // Get the current state from IndexedDB
+    const data = await stateManager.getState(dataName);
 
-  // get data
-  const data = await stateManager.getState(dataName)
+    // Determine the active state
+    let isActive = isLoadMode ? data?.value ?? false : !data?.value;
 
-  // asign data
-  let isActive = !data.value;
-  const checkboxBtn = document.getElementById(btnId);
+    // Update the checkbox button state
+    const checkboxBtn = document.getElementById(btnId);
+    if (checkboxBtn) {
+      checkboxBtn.checked = isActive; // Update checkbox UI
+    }
 
-  if(!reverse){
-    // update checkbox state
-    isActive 
-    ? checkboxBtn.checked = true 
-    : checkboxBtn.checked = false;
+    // Toggle the class based on the state
+    if (!reverse) {
+      classHolder.classList.toggle(className, isActive);
+    } else {
+      classHolder.classList.toggle(className, !isActive);
+    }
 
-    // toggle class base on state
-    classHolder.classList.toggle(className, isActive);
-  }else {
-    isActive 
-    ? checkboxBtn.checked = true 
-    : checkboxBtn.checked = false;
-    
-    // toggle class base on state
-    classHolder.classList.toggle(className, isActive === false);
+    // Save the state in IndexedDB (only if not in load mode)
+    if (!isLoadMode) {
+      await stateManager.setState(dataName, { value: isActive });
+    }
+  } catch (error) {
+    console.error(`Error updating checkbox state for "${dataName}":`, error);
   }
-  
-
-
-
-  // set data
-  stateManager.setState(dataName, { value: isActive });
 };
+
+export default updateCheckboxState;

@@ -1,49 +1,60 @@
 import { stateManager } from "../../db/stateManager.js";
 
-export const setFeatureClass = async ({ classes = [], btnId = "" }) => {
+/**
+ * Sets or toggles a feature class on the `classHolder` element.
+ *
+ * @param {Object} params - The configuration object for the feature.
+ * @param {string} params.dataName - The name of the feature in IndexedDB.
+ * @param {string} params.btnId - The ID of the button associated with the feature.
+ * @param {string[]} params.classes - The array of CSS classes to toggle.
+ * @param {string[]} params.btnTexts - The array of button texts for each state.
+ * @param {HTMLElement} params.classHolder - The element to apply the class to (default: document.body).
+ * @param {boolean} params.isLoadMode - Whether the function is being called in load mode.
+ * @returns {Object} - The updated state of the feature.
+ */
+export const setFeatureClass = async ({
+  dataName,
+  btnId,
+  classes,
+  btnTexts,
+  classHolder = document.body,
+  isLoadMode = false,
+}) => {
   try {
-    if (!classes || classes.length === 0) {
-      throw new Error("At least one class is required.");
-    }
+    // Get the saved state from IndexedDB
+    const savedState = await stateManager.getState(dataName);
+    const currentIndex = savedState?.index || 0;
 
-    const cssKeyProperty = classes.join("-"); // Unique key for IndexedDB (based on all classes)
+    // Calculate the new index (only in action mode)
+    const newIndex = isLoadMode ? currentIndex : (currentIndex + 1) % (classes.length + 1);
 
-    // Get the current state from IndexedDB
-    const data = await stateManager.getState(cssKeyProperty);
-    let index = data?.index || 0;
+    // Remove all existing classes
+    classes.forEach((cls) => classHolder.classList.remove(cls));
 
-    // Remove the current class if it exists
-    if (classes[index]) {
-      document.body.classList.remove(classes[index]);
-    }
-
-    // Increment index and wrap around using modulo
-    index = (index + 1) % classes.length;
-
-    // Apply the new class, if any
-    const newClass = classes[index];
+    // Apply the new class if newIndex > 0
+    const newClass = newIndex > 0 ? classes[newIndex - 1] : null;
     if (newClass) {
-      document.body.classList.add(newClass);
+      classHolder.classList.add(newClass);
     }
 
-    // Save the new state in IndexedDB
-    await stateManager.setState(cssKeyProperty, { index, property: newClass });
-
-    // Update the button UI
-    if (btnId) {
-      const btn = document.getElementById(btnId);
-      if (btn) {
-        btn.classList.toggle("active", newClass !== "");
-        const formattedText = btnId
-          .split("-")
-          .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-          .join(" ");
-        btn.textContent = `${formattedText}: ${
-          newClass ? newClass : "Disabled"
-        }`;
-      }
+    // Update the button text and active class
+    const button = document.getElementById(btnId);
+    if (button) {
+      const buttonText = btnTexts[newIndex] || btnId.replace(/-/g, " ");
+      button.innerText = buttonText; // Update button text
+      button.classList.toggle("active", newIndex > 0); // Add/remove the active class
     }
+
+    // Save the updated state in IndexedDB (only in action mode)
+    const updatedState = { index: newIndex, property: newClass };
+    if (!isLoadMode) {
+      await stateManager.setState(dataName, updatedState);
+    }
+
+    return updatedState; // Return the updated state
   } catch (error) {
-    console.error("Error toggling classes:", error);
+    console.error(`Error in setFeatureClass for "${dataName}":`, error);
   }
 };
+
+export default setFeatureClass;

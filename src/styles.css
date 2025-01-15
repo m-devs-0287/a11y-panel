@@ -1,48 +1,36 @@
 @font-face {
-  font-family: 'OpenDyslexic';
-  src: url('../fonts/OpenDyslexic3-Regular.ttf') format('truetype');
+  font-family: "OpenDyslexic3-Regular";
+  src: url("./fonts/OpenDyslexic3-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'OpenDyslexic-Bold';
-  src: url('../fonts/OpenDyslexic3-Bold.ttf') format('truetype');
+  font-family: "OpenDyslexic3-Bold";
+  src: url("./fonts/OpenDyslexic3-Bold.ttf") format("truetype");
 }
 
-/* Default Dyslexia Font */
-.dyslexia-font p,
-.dyslexia-font h1,
-.dyslexia-font h2,
-.dyslexia-font h3,
-.dyslexia-font h4,
-.dyslexia-font h5,
-.dyslexia-font h6,
-.dyslexia-font span,
-.dyslexia-font li,
-.dyslexia-font a {
-  font-family: 'OpenDyslexic', sans-serif !important;
-  transition: font-family 0.3s ease-in-out;
+
+.dyslexia-font-regular {
+  font-family: "OpenDyslexic3-Regular", Arial, sans-serif !important;
 }
 
-/* Bold Dyslexia Font */
-.dyslexia-bold p,
-.dyslexia-bold h1,
-.dyslexia-bold h2,
-.dyslexia-bold h3,
-.dyslexia-bold h4,
-.dyslexia-bold h5,
-.dyslexia-bold h6,
-.dyslexia-bold span,
-.dyslexia-bold li,
-.dyslexia-bold a {
-  font-family: 'OpenDyslexic-Bold', sans-serif !important;
-  transition: font-family 0.3s ease-in-out;
+.dyslexia-font-bold {
+  font-family: "OpenDyslexic3-Bold", Arial, sans-serif !important;
 }
+
+
+
+body .bold{
+  font-weight: 700 !important; 
+}
+
+
 
 /* this will protect the panel from being affected */
 .no-feature {
   font-size: initial !important; 
   letter-spacing: normal !important; 
   font-weight: normal !important; 
+  font-family: Arial, sans-serif !important;
 }
 
 /* variables

@@ -1,29 +1,20 @@
-import { featuresConfig } from "../config/featuresConfig.js";
+import { features } from "../config/features.js";
+import { stateManager } from "../db/stateManager.js";
 
 export const initFeatures = () => {
-  Object.values(featuresConfig).forEach(({ id, action }) => {
-    const element = document.getElementById(id);
-
-    if (element && action) {
-      if (element.tagName === "BUTTON") {
-        // Handle button clicks
-        element.addEventListener("click", () => {
-          action(); // Trigger the feature
-          console.log(`Feature triggered by button: ${id}`);
-        });
-      } else if (element.tagName === "INPUT" && element.type === "checkbox") {
-        // Handle checkbox changes
-        element.addEventListener("change", () => {
-          action(); // Trigger the feature
-          console.log(`Feature triggered by checkbox: ${id}`);
-        });
-      } else {
-        console.warn(`Unsupported element type for ID "${id}".`);
-      }
-    } else {
-      console.warn(`Element with ID "${id}" not found or no action provided.`);
+  for (const [key, { btnId, action }] of Object.entries(features)) {
+    const button = document.getElementById(btnId);
+    if (button) {
+      button.addEventListener("click", async () => {
+        try {
+          const newState = await action(); // Call the feature action
+          if (newState) {
+            await stateManager.setState(key, newState); // Save the new state to IndexedDB
+          }
+        } catch (error) {
+          console.error(`Error handling feature "${key}":`, error);
+        }
+      });
     }
-  });
+  }
 };
-
-

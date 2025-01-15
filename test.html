@@ -16,21 +16,20 @@
 
 
 
-  <!-- panel -->
-  <a href="#main-header" class="skip-link">Skip to header</a>
+  
   <!-- accessibility panel -->
   <div id="panel-container"></div>
     
     <div>
       <a id="main-header" href="#main-content" class="skip-link">Skip to Main Content</a>
-      <header>
+      <header id="header">
         <h1>Accessibility Panel Demo</h1>
         <p>Use this page to test the functionality of the accessibility panel.</p>
         <button>This is a button on header</button>
       </header>
 
       <div style="display: flex; height: 100vh;">
-        <aside id="sidebar" style="border: 0; border-right: 1px solid gray;">
+        <aside id="aside" style="border: 0; border-right: 1px solid gray;">
           <ul style="min-width: 100px; list-style: none; padding: 1rem;">
             <li style="padding: 8px 0;"><a href="">Aside Item</a></li>
             <li style="padding: 8px 0;"><a href="">Aside Item</a></li>
@@ -63,12 +62,11 @@
       initAccessibilityPanel({
         panelLocation: '#panel-container',
         buttonLocation: '#panel-container',
-        // theme: {path: './test.css'}, //needs to be remove once dev is done
         theme: "light",
-        environment: 'development', //done
-        debugMode: false, // done
-        active: true, //needs to work
-        upButtonId: 'top'//needs to work 
+        environment: 'development', 
+        debugMode: false, 
+        active: true, 
+        upButtonId: 'header'
       });
     </script>
 

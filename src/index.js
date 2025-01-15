@@ -4,7 +4,6 @@ import { initFeatures } from "./features/initFeatures.js";
 import { initializeDB } from "./db/initializeDB.js";
 import { loadCurrentStates } from "./states/loadCurrentStates.js";
 
-
 export const initAccessibilityPanel = ({
   panelLocation,
   buttonLocation,
@@ -19,7 +18,7 @@ export const initAccessibilityPanel = ({
   // Debug: Log application initialization
   debugLog("Initializing Accessibility Panel...");
 
-  // Bootstrap the app
+  // Bootstrap the app (render panel and button UI)
   bootstrap({
     panelLocation,
     buttonLocation,
@@ -29,17 +28,29 @@ export const initAccessibilityPanel = ({
   });
 
   // Initialize features and restore state
-  
-  document.addEventListener("DOMContentLoaded", async () => {
+  const initializePanel = async () => {
     try {
+      // 1. Initialize IndexedDB
       await initializeDB();
+
+      // 2. Load saved states from IndexedDB and apply them
       await loadCurrentStates();
+
+      // 3. Attach event listeners to buttons
       initFeatures();
+
+      debugLog("Accessibility Panel initialized successfully.");
     } catch (error) {
       console.error("Failed to initialize database or features:", error);
     }
-  });
+  };
+
+  // Check if the DOM is ready before initializing
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializePanel);
+  } else {
+    initializePanel();
+  }
 
   debugLog("Accessibility Panel initialization complete.");
 };
-

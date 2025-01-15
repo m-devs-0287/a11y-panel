@@ -1,9 +1,12 @@
-const DB_NAME = "A11yDB";
-const DB_STORE_NAME = "appState";
-const DB_VERSION = 1;
+const DB_NAME = "A11yDB"; // Name of the IndexedDB database
+const DB_STORE_NAME = "appState"; // Name of the object store
+const DB_VERSION = 1; // Version of the database
 
-let db;
+let db; // Database reference
 
+/**
+ * Initialize the IndexedDB database
+ */
 export const initializeDatabase = () => {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
@@ -27,6 +30,11 @@ export const initializeDatabase = () => {
   });
 };
 
+/**
+ * Save a key-value pair in the database
+ * @param {string} key - The key to identify the state
+ * @param {any} value - The value to store
+ */
 export const setState = (key, value) => {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(DB_STORE_NAME, "readwrite");
@@ -38,6 +46,11 @@ export const setState = (key, value) => {
   });
 };
 
+/**
+ * Retrieve a value from the database by key
+ * @param {string} key - The key to look up
+ * @returns {Promise<any>} - The retrieved value or null if not found
+ */
 export const getState = (key) => {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(DB_STORE_NAME, "readonly");
@@ -49,6 +62,9 @@ export const getState = (key) => {
   });
 };
 
+/**
+ * Clear all data in the object store
+ */
 export const clearState = () => {
   return new Promise((resolve, reject) => {
     const transaction = db.transaction(DB_STORE_NAME, "readwrite");
@@ -60,6 +76,7 @@ export const clearState = () => {
   });
 };
 
+// Export the state manager as an object
 export const stateManager = {
   initializeDatabase,
   setState,

@@ -15,3 +15,4 @@ export * from "./helpers/getElementViewportDistances.js";
 export * from "./helpers/debugMode.js";
 export * from "./helpers/setFeatureProperty.js";
 export * from "./helpers/updateCheckboxState.js";
+export * from "./helpers/setFeatureClass.js";

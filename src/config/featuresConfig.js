@@ -45,10 +45,6 @@ export const featuresConfig = {
     id: "dyslexia-font",
     action: setDyslexiaFont,
   },
-  // ViewLinks: {
-  //   id: "view-links",
-  //   action: setViewLinks,
-  // },
   resetFeatures: {
     id: "reset-all",
     action: setResetFeatures,

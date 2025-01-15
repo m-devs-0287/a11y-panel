@@ -1,3 +1,11 @@
+import { generateDynamicNavigationLinks } from "../utils/helpers/generateDynamicNavigationLinks.js"; // Ensure this path is correct
+
+// IDs to look for on the page
+const idsToInclude = ["header", "aside", "footer"];
+
+// Dynamically generate links for existing IDs on the page
+const dynamicLinks = generateDynamicNavigationLinks(idsToInclude);
+
 export const modalNavigation = {
   id: "modal-navigation",
   className: "modal-navigation",
@@ -34,144 +42,7 @@ export const modalNavigation = {
             {
               type: "ul",
               className: "modal-navigation-list",
-              children: [
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Accessibility Panel" },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#main-header",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Main Header" },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Aside Navigation" },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Articles" },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Footer" },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            },
-            {
-              type: "ul",
-              className: "modal-navigation-list",
-              children: [
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Centers & Programs" },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Current Students" },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Faculty & Staff" },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Corporate" },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "li",
-                  children: [
-                    {
-                      type: "a",
-                      href: "#",
-                      children: [
-                        { type: "span", label: "›" },
-                        { type: "span", label: "Careers" },
-                      ],
-                    },
-                  ],
-                },
-              ],
+              children: dynamicLinks,
             },
           ],
         },

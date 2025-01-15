@@ -1,9 +1,0 @@
-export { setFontSize } from "./setFontSize.js";
-export { setLetterSpacing } from "./setLetterSpacing.js";
-export { setDarkMode } from "./setDarkMode.js";
-export { setDyslexiaFont } from "./setDyslexiaFont.js";
-export { setFontWeight } from "./setFontWeight.js";
-export { setTextAlign } from "./setTextAlign.js";
-export { setViewLinks } from "./setViewLinks.js";
-export { setAnimations } from "./setAnimations.js";
-export { setResetFeatures } from "./setResetFeatures.js";
