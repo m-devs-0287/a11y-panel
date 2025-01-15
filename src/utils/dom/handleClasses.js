@@ -15,10 +15,8 @@ export function toggleClassName(eventElement, classHolder, className) {
   eventElement.addEventListener("click", () => {
     if (classHolder.classList.contains(className)) {
       classHolder.classList.remove(className);
-      debugLog(`Class "${className}" removed from`, classHolder);
     } else {
       classHolder.classList.add(className);
-      debugLog(`Class "${className}" added to`, classHolder);
     }
   });
 }
@@ -40,13 +38,11 @@ export function removeClassName(eventElement, classHolder, classNames) {
       classNames.forEach((className) => {
         if (classHolder.classList.contains(className)) {
           classHolder.classList.remove(className);
-          debugLog(`Class "${className}" removed from`, classHolder);
         }
       });
     } else {
       if (classHolder.classList.contains(classNames)) {
         classHolder.classList.remove(classNames);
-        debugLog(`Class "${classNames}" removed from`, classHolder);
       }
     }
   });
