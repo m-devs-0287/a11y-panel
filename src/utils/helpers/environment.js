@@ -1,3 +1,11 @@
+/**
+ * @TODO Finish impelementation of environment mode
+ * @description switch between development and production modes
+ * 
+ * @priosity Low
+ * 
+ * 
+ */
 let currentEnv = "production"; // Default environment
 
 /**

@@ -5,7 +5,7 @@ const themePaths = {
 };
 
 
-export const applyTheme = (theme, debugLog = false) => {
+export const applyTheme = (theme) => {
   let themePath;
 
   // Check if theme is an object with a custom path
@@ -26,10 +26,6 @@ export const applyTheme = (theme, debugLog = false) => {
   }
 
   themeLink.href = themePath;
-
-  if (debugLog) {
-    console.log(`Theme applied: ${themePath}`);
-  }
 };
 
 export default applyTheme;

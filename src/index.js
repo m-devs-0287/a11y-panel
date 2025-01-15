@@ -1,56 +1,56 @@
 import { bootstrap } from "./lifecycle/bootstrap.js";
-import { setDebugMode, debugLog } from "./utils/helpers/debugMode.js";
 import { initFeatures } from "./features/initFeatures.js";
 import { initializeDB } from "./db/initializeDB.js";
 import { loadCurrentStates } from "./states/loadCurrentStates.js";
+import initializeEnvironment from "./enviroments/index.js";
+import { debugLog } from "./utils/index.js";
 
+
+/**
+ * Initializes the Accessibility Panel.
+ * @param {Object} options - Configuration options for the panel.
+ * @param {string} options.panelLocation - Selector for the panel container.
+ * @param {string} options.buttonLocation - Selector for the button container.
+ * @param {string} [options.theme="default"] - Theme to apply.
+ * @param {boolean} [options.active=true] - Whether the panel is active by default.
+ * @param {string} [options.environment="production"] - Environment mode.
+ * @param {boolean} [options.debugMode=false] - Enables debug logs.
+ */
 export const initAccessibilityPanel = ({
-  panelLocation,
-  buttonLocation,
-  theme = "default",
-  active = true,
+  panelLocation = "#panel-container",
+  buttonLocation = "#panel-container",
+  theme = "light",
   environment = "production",
-  debugMode = false,
+  
 }) => {
-  // Set debug mode
-  setDebugMode(debugMode);
+  // initialize environment
+  initializeEnvironment(environment);
 
-  // Debug: Log application initialization
-  debugLog("Initializing Accessibility Panel...");
-
-  // Bootstrap the app (render panel and button UI)
+  // bootstrap UI components
   bootstrap({
     panelLocation,
     buttonLocation,
     theme,
     environment,
-    debugMode,
   });
 
-  // Initialize features and restore state
+  // Core initialization logic
   const initializePanel = async () => {
     try {
-      // 1. Initialize IndexedDB
-      await initializeDB();
+      await initializeDB();          // Initialize IndexedDB
+      await loadCurrentStates();     // Load and apply saved states
+      initFeatures();                // Attach event listeners to features
 
-      // 2. Load saved states from IndexedDB and apply them
-      await loadCurrentStates();
-
-      // 3. Attach event listeners to buttons
-      initFeatures();
-
-      debugLog("Accessibility Panel initialized successfully.");
+      
     } catch (error) {
-      console.error("Failed to initialize database or features:", error);
+      console.error("Error during initialization:", error);
     }
   };
 
-  // Check if the DOM is ready before initializing
+  // Ensure DOM is ready before initializing
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initializePanel);
   } else {
     initializePanel();
   }
-
-  debugLog("Accessibility Panel initialization complete.");
 };

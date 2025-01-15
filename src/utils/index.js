@@ -7,7 +7,6 @@ export * from "./dom/toggleTabbing.js";
 // Re-export everything from events/
 export * from "./events/handleDragging.js";
 export * from "./events/handlePanelInterations.js";
-export * from "./events/switchEnvironmentMode.js";
 
 // Re-export everything from helpers/
 export * from "./helpers/environment.js";

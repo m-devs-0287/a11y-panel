@@ -11,10 +11,8 @@ let cachedPanel = null;
 
 export const genAndCachedDOMElements = () => {
   // Log the current cachedPanel state for debugging
-  debugLog("Current cachedPanel:", cachedPanel);
 
   if (!cachedPanel) {
-    debugLog("Generating the panel for the first time...");
     try {
       // Generate elements
       const panel = generateRecursiveElement(panelUI); // Panel
@@ -28,14 +26,13 @@ export const genAndCachedDOMElements = () => {
         modalNav
       };
     } catch (error) {
-      console.error("Error generating HTML elements:", error);
+      debugLog("Error generating HTML elements:", error);
       return null;
     }
   } else {
     debugLog("Reusing cached HTML elements...");
   }
 
-  debugLog("Generated HTML Elements and cache variable...");
   return cachedPanel;
 };
 

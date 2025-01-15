@@ -530,3 +530,26 @@ input:checked + .slider::before {
 
   }
 }
+
+
+.hover {
+  border: 2px solid #007bff; /* Blue border */
+  transition: border 0.3s ease-in-out;
+}
+
+.panel:focus {
+  outline: none;
+  border: 2px solid #007bff; /* Blue border for focus */
+}
+
+/* Highlight effect */
+.hover {
+  border: 2px solid #007bff; /* Blue border */
+  transition: border 0.3s ease-in-out;
+}
+
+/* Panel focus styles */
+#modal-navigation:focus {
+  outline: none;
+  border: 2px solid #007bff;
+}

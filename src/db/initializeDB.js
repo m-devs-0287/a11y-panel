@@ -1,11 +1,11 @@
 import { stateManager } from "./stateManager.js";
+import { debugLog } from "../utils/index.js";
 
 export const initializeDB = async () => {
   try {
-    await stateManager.initializeDatabase(); // Initializes the IndexedDB
-    console.log("Database initialized successfully.");
+    await stateManager.initializeDatabase(); 
   } catch (error) {
-    console.error("Error initializing the database:", error);
-    throw error; // Rethrow error to handle it in calling function
+    debugLog("Error initializing the database:", error);
+    throw error;
   }
 };
