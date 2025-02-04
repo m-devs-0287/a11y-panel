@@ -12,16 +12,16 @@ export const handleDragging = (container, dragElement, debugMode = false) => {
 
   // Define the edge distances
   const dimensionsMap = {
-    top: 20,
-    right: 20,
+    top: 40,
+    right: 30,
     bottom: 20,
     left: 20,
   };
 
   // Ensure container has fixed width and height
   const containerStyle = window.getComputedStyle(container);
-  container.style.width = containerStyle.width; // Lock current width
-  container.style.height = containerStyle.height; // Lock current height
+  container.style.width = containerStyle.width;
+  container.style.height = containerStyle.height;
 
   if (debugMode) {
     console.log("Initialized dragging with the following container styles:", {
@@ -38,10 +38,11 @@ export const handleDragging = (container, dragElement, debugMode = false) => {
 
     // Clear conflicting styles and disable transitions
     container.style.transition = "none";
-    container.style.right = ""; // Clear conflicting right style
-    container.style.bottom = ""; // Clear conflicting bottom style
+    container.style.right = "";
+    container.style.bottom = "";
 
-    if (debugMode) console.log("Drag started. Initial positions:", { startX, startY });
+    if (debugMode)
+      console.log("Drag started. Initial positions:", { startX, startY });
 
     // Add event listeners for dragging
     document.addEventListener("mousemove", onMouseMove);
@@ -61,12 +62,12 @@ export const handleDragging = (container, dragElement, debugMode = false) => {
     let newY = e.clientY - startY;
 
     // Apply boundary constraints using dimensionsMap
-    if (newX < dimensionsMap.left) newX = dimensionsMap.left; // Left edge
+    if (newX < dimensionsMap.left) newX = dimensionsMap.left;
     if (newX + containerWidth > screenWidth - dimensionsMap.right)
-      newX = screenWidth - containerWidth - dimensionsMap.right; // Right edge
-    if (newY < dimensionsMap.top) newY = dimensionsMap.top; // Top edge
+      newX = screenWidth - containerWidth - dimensionsMap.right;
+    if (newY < dimensionsMap.top) newY = dimensionsMap.top;
     if (newY + containerHeight > screenHeight - dimensionsMap.bottom)
-      newY = screenHeight - containerHeight - dimensionsMap.bottom; // Bottom edge
+      newY = screenHeight - containerHeight - dimensionsMap.bottom;
 
     // Apply new position
     container.style.left = `${newX}px`;
@@ -168,7 +169,7 @@ export const handleDragging = (container, dragElement, debugMode = false) => {
       });
     }
 
-    snapToNearestEdge()
+    snapToNearestEdge();
   }
 
   // Listen for window resize events

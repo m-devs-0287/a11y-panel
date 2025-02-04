@@ -43,7 +43,8 @@ export const setFeatureProperty = async ({
 
     // Apply CSS style
     document.body.style[cssKeyProperty] = cssValueProperty;
- 
+
+
     // Save the state only if not in load mode
     if (!isLoadMode) {
       await stateManager.setState(cssKeyProperty, {

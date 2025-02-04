@@ -1,6 +1,15 @@
 export const generateRecursiveElement = (config = {}) => {
   // Determine namespace for SVG elements
-  const namespace = ["svg", "path", "g"].includes(config.type)
+  const namespace = [
+    "svg",
+    "path",
+    "rect",
+    "circle",
+    "line",
+    "polygon",
+    "polyline",
+    "g",
+  ].includes(config.type)
     ? "http://www.w3.org/2000/svg"
     : undefined;
 
@@ -21,9 +30,13 @@ export const generateRecursiveElement = (config = {}) => {
 
   // Apply dynamic attributes (aria, role, custom attributes)
   for (const [key, value] of Object.entries(config)) {
-    if (!["type", "children", "className", "label", "id", "attributes"].includes(key)) {
+    if (
+      !["type", "children", "className", "label", "id", "attributes"].includes(
+        key
+      )
+    ) {
       // Handle case-sensitive attributes
-      const attributeName = key === "viewbox" ? "viewBox" : key; 
+      const attributeName = key === "viewbox" ? "viewBox" : key;
       if (value !== undefined && value !== null) {
         element.setAttribute(attributeName, value);
       }
@@ -34,7 +47,7 @@ export const generateRecursiveElement = (config = {}) => {
   if (config.attributes) {
     Object.entries(config.attributes).forEach(([key, value]) => {
       // Handle case-sensitive attributes
-      const attributeName = key === "viewbox" ? "viewBox" : key; 
+      const attributeName = key === "viewbox" ? "viewBox" : key;
       if (value !== undefined && value !== null) {
         element.setAttribute(attributeName, value);
       }
@@ -45,9 +58,9 @@ export const generateRecursiveElement = (config = {}) => {
   if (config.children && Array.isArray(config.children)) {
     config.children.forEach((childConfig) => {
       // Recursive call with fallback
-      const childElement = generateRecursiveElement(childConfig || {}); 
+      const childElement = generateRecursiveElement(childConfig || {});
       // Append the child to the parent
-      element.appendChild(childElement); 
+      element.appendChild(childElement);
     });
   }
 

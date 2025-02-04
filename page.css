@@ -1,74 +1,103 @@
+/* Base styles for the TTS container */
+.tts-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: var(--color-4, #f1f4f7); /* Light background */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  visibility: hidden; /* Initially hidden */
+  opacity: 0;
+  transition: visibility 0.3s, opacity 0.3s ease-in-out;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+}
 
+/* Show the container when visible */
+.tts-container[aria-hidden="false"] {
+  visibility: visible;
+  opacity: 1;
+}
 
+/* Button styles */
+.tts-container button {
+  background-color: var(--color-6, #009cdf); /* Button background */
+  color: var(--color-3, #ffffff); /* Button text color */
+  border: none;
+  padding: 8px 12px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.2s;
+}
 
-/* Page Styles */
+/* Hover and focus states for buttons */
+.tts-container button:hover,
+.tts-container button:focus {
+  background-color: var(--color-2, #008fe2); /* Button hover background */
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Stop button hidden by default */
+.tts-container button[hidden] {
+  display: none;
+}
+
+/* Add focus outlines for accessibility */
+.tts-container button:focus {
+  outline: 2px solid var(--color-2, #008fe2);
+  outline-offset: 2px;
+}
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f0f0f0;
-  color: #333;
-  /* transition: font-size 0.3s ease;  */
-
 }
 
-body.dark-mode {
-  background-color: #1e1e2e; /* Dark background */
-  color: #e0e0e0; /* Light text for dark mode */
-}
-
-header {
-  background-color: #007acc;
+.header {
+  background-color: #333;
   color: white;
-  text-align: center;
-  padding: 1rem;
+  padding: 15px 20px;
 }
 
-header.dark-mode {
-  background-color: #1a1a2e; /* Darker shade for dark mode header */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-header h1 {
+.nav h1 {
   margin: 0;
 }
 
-main {
-  padding: 2rem;
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
 }
 
-main.dark-mode {
-  background-color: #1e1e1e; /* Darker content area */
+.nav-links li {
+  display: inline;
 }
 
-.footer {
-  background-color: #007acc;
+.nav-links a {
   color: white;
-  text-align: center;
-  padding: 1rem;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 8px;
+  transition: background-color 0.3s ease;
 }
 
-.footer.dark-mode {
-  background-color: #1a1a2e; /* Darker footer background for dark mode */
+.nav-links a:hover {
+  background-color: #575757;
+  border-radius: 4px;
 }
-
-/* Floating Container Styles */
-#floating-container {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
-  z-index: 1000;
-  background: #000;
-  border-radius: 5px;
-  border: 1px solid red;
-  color: white;
-}
-
-#floating-container.dark-mode {
-  background: #1e1e1e; /* Darker background for floating container */
-  border: 1px solid #444; /* Subtle border for dark mode */
-}
-
-

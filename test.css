@@ -1,35 +1,69 @@
 :root {
-  /* Panel */
-  --panel-background-color: #ffffff; /* White background */
-  --panel-color: #5a2d47; /* Deep red text for contrast */
-  --panel-border-color: #d77c8e; /* Soft red border */
+  --test-background-color: var(--color-4);
+  /* --test-text-color: var(--color-5); */
+  --test-button-background: var(--color-6);
+  --test-button-text: var(--color-3);
+}
 
-  /* Features buttons */
-  --button-color: #ffffff; /* White text */
-  --button-background-color: #5a9f63; /* Muted green background */
-  --button-border-color: #d77c8e; /* Red border */
-  --button-hover-color: #f7e5a4; /* Gold text on hover */
-  --button-hover-background-color: #3f7f6e; /* Darker green hover background */
-  --button-active-color: #ffffff; /* White text on active */
-  --button-active-background-color: #aa2648; /* Deep red background on active */
+/* Light Theme (Default) */
+.theme-container {
+  border: var(--test-border);
+  background-color: var(--test-background-color);
+  color: var(--test-text-color);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.5s ease-in-out;
+  font-size: 18px;
+}
 
-  /* Toggle buttons */
-  --circle-toggle: #f7e5a4; /* Gold circle */
-  --active-toggle: #aa2648; /* Deep red for active state */
-  --slider-toggle: #5a9f63; /* Muted green slider background */
+.theme-btn {
+  background-color: var(--test-button-background);
+  color: var(--test-button-text);
+  border: var(--test-border);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: all 0.5s ease-in-out;
+}
 
-  /* Overlay bottom gradient */
-  --overlay-bottom-gradient: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 25%, /* Transparent white at the top */
-    rgba(167, 44, 71, 0.50) 50%, /* Semi-transparent deep red */
-    rgba(90, 159, 99, 0.75) 75%, /* Semi-transparent green */
-    rgba(247, 229, 164, 1) 100% /* Fully opaque gold at the bottom */
-  );
+.theme-btn:hover {
+  background-color: var(--color-2);
+}
 
-  /* Access button */
-  --access-button-background-color: #d77c8e; /* Soft red background */
-  --access-button-color: #ffffff; /* White text */
-  --access-button-hover-background-color: #5a9f63; /* Muted green background on hover */
-  --access-button-hover-color: #f7e5a4; /* Gold text on hover */
+/* Dark Theme */
+body.dark-mode {
+  --test-background-color: var(--color-4);
+  --test-button-background: var(--color-2);
+  --test-button-text: var(--color-3);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --test-background-color: var(--color-3);
+    --test-button-background: var(--color-2);
+    --test-button-text: var(--color-3);
+  }
+}
+
+/* High Contrast Mode */
+body.high-contrast {
+  --test-background-color: black;
+  --test-button-background: black;
+  --test-button-text: white;
+  --test-border: 2px solid white;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  :root {
+    --test-background-color: black;
+    --test-button-background: yellow;
+    --test-button-text: white;
+  }
+}
+
+body {
+  background-color: var(--color-8);
 }

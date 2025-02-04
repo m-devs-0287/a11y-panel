@@ -1,5 +1,5 @@
 const themePaths = {
-  default: "src/themes/css/custome.css",
+  default: "src/themes/css/default.css",
   dark: "src/themes/css/dark.css",
   light: "src/themes/css/light.css",
 };

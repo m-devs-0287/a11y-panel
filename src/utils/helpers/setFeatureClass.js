@@ -21,28 +21,18 @@ export const setFeatureClass = async ({
   isLoadMode = false,
 }) => {
   try {
-    // Get the saved state from IndexedDB
     const savedState = await stateManager.getState(dataName);
     const currentIndex = savedState?.index || 0;
 
-    // Calculate the new index (only in action mode)
-    const newIndex = isLoadMode ? currentIndex : (currentIndex + 1) % (classes.length + 1);
+    const newIndex = isLoadMode
+      ? currentIndex
+      : (currentIndex + 1) % (classes.length + 1);
 
-    // Remove all existing classes
     classes.forEach((cls) => classHolder.classList.remove(cls));
-
-    // Apply the new class if newIndex > 0
     const newClass = newIndex > 0 ? classes[newIndex - 1] : null;
+
     if (newClass) {
       classHolder.classList.add(newClass);
-    }
-
-    // Update the button text and active class
-    const button = document.getElementById(btnId);
-    if (button) {
-      const buttonText = btnTexts[newIndex] || btnId.replace(/-/g, " ");
-      button.innerText = buttonText; // Update button text
-      button.classList.toggle("active", newIndex > 0); // Add/remove the active class
     }
 
     // Save the updated state in IndexedDB (only in action mode)
@@ -51,7 +41,44 @@ export const setFeatureClass = async ({
       await stateManager.setState(dataName, updatedState);
     }
 
-    return updatedState; // Return the updated state
+    const formattedText = btnId
+      .split("-")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+
+    const btn = document.getElementById(btnId);
+    // update the active class
+    btn.classList.toggle("active", newIndex > 0);
+
+
+    // check if aleast one children has the btn-icon class
+    if (btn.querySelector(".btn-icon")) {
+      const spanTags = btn.querySelectorAll("span");
+
+      //  find the tag without the class of btn-icon
+      const nonBtnIconTag = 
+        Array
+          .from(spanTags)
+          .find(
+        (span) => !span.classList.contains("btn-icon")
+      );
+
+      nonBtnIconTag.innerText = `${formattedText} ${btnTexts[newIndex] || ""}`;
+
+    }
+
+    // // Update the button text and active class
+    // const button = document.getElementById(btnId);
+
+    // if (!button) {
+    //   console.log("Button with id of ", btnId, " not found.");
+    //   return;
+    // }
+
+    // const buttonText = btnTexts[newIndex] || btnId.replace(/-/g, " ");
+    // button.innerText = buttonText;
+
+    return updatedState;
   } catch (error) {
     console.error(`Error in setFeatureClass for "${dataName}":`, error);
   }

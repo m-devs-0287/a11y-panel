@@ -1,10 +1,61 @@
-import { bootstrap } from "./lifecycle/bootstrap.js";
+/**
+ * initAccessibilityPanel.js
+ *
+ * This file is the core entry point for initializing and managing the Accessibility Panel on the web page.
+ * It handles key setup tasks such as applying themes, initializing features, managing drag-and-drop
+ * functionality, and configuring language support. The panel is designed to enhance the accessibility of
+ * the page, providing options like keyboard shortcuts, customizable themes, language translation, and
+ * persistent states across sessions.
+ *
+ * Key Functionalities:
+ * - Dynamically generate and cache DOM elements required by the panel.
+ * - Initialize drag-and-drop for repositioning the panel.
+ * - Apply themes and configurations based on user or environment settings.
+ * - Set up persistent states using a database to maintain feature configurations.
+ * - Provide an accessible language selector with support for multiple languages.
+ * - Enable keyboard interactions and shortcuts for opening, closing, and navigating the panel.
+ * - Handle panel visibility and ARIA attributes for screen reader support.
+ *
+ * Dependencies:
+ * - Core modules like `initFeatures`, `initializeDB`, and `applyTheme` are responsible for configuring
+ *   the panel's environment, state, and visual design.
+ * - Utility functions manage drag-and-drop behavior, HTML injection, and class toggling.
+ * - Event handlers and listeners handle user interactions and accessibility shortcuts.
+ *
+ * Note:
+ * The panel is designed to work with asynchronous data loading, ensuring components are
+ * initialized sequentially without errors. Proper error handling is included to catch and log any
+ * initialization failures.
+ */
+
 import { initFeatures } from "./features/initFeatures.js";
 import { initializeDB } from "./db/initializeDB.js";
 import { loadCurrentStates } from "./states/loadCurrentStates.js";
+import { initializeGTranslate } from "./utils/events/languageSelector.js";
+import { toggleClassName } from "./utils/index.js";
+import { applyTheme } from "./themes/js/applyTheme.js";
+import { genAndCachedDOMElements } from "./cache/cachePanel.js";
+import { appendGenHTML, handleDragging } from "./utils/index.js";
+import { toggleAccessiblePanel } from "./utils/dom/toggleAccessiblePanel.js";
 import initializeEnvironment from "./enviroments/index.js";
-import { debugLog } from "./utils/index.js";
+import initFeatBtnsDragAndDrop from "./utils/events/initFeatBtnsDragAndDrop.js";
+import { initMagnifier } from "./utils/dom/initMagnifier.js";
+import { observeClass } from "./utils/dom/observeClass.js";
 
+/**
+ *
+ * List of functions here should not be deleted from the file directories
+ *
+ * import {handlePanelInteractions} from "./utils/index.js";
+ * import registerKeyboardShortcut from "./utils/events/registerKeyboardShortcut.js";
+ * import handleTextToSpeech from "./utils/events/handleTextToSpeech.js";
+ * import handleDragAndDropFeatures from "./utils/dom/handleDragAndDropFeatures.js";
+ * import { handleDragAndDrop } from "./utils/events/dragAndDrop.js";
+ * import { initTTS } from "./utils/dom/initTTS.js";
+ * import { observeClass } from "./utils/dom/observeClass.js";
+ *
+ *
+ */
 
 /**
  * Initializes the Accessibility Panel.
@@ -14,40 +65,123 @@ import { debugLog } from "./utils/index.js";
  * @param {string} [options.theme="default"] - Theme to apply.
  * @param {boolean} [options.active=true] - Whether the panel is active by default.
  * @param {string} [options.environment="production"] - Environment mode.
+ * @param {string} [options.language="en"] - Default language for the panel.
  * @param {boolean} [options.debugMode=false] - Enables debug logs.
  */
 export const initAccessibilityPanel = ({
   panelLocation = "#panel-container",
-  buttonLocation = "#panel-container",
-  theme = "light",
+  theme,
   environment = "production",
-  
+  language,
 }) => {
-  // initialize environment
-  initializeEnvironment(environment);
-
-  // bootstrap UI components
-  bootstrap({
-    panelLocation,
-    buttonLocation,
-    theme,
-    environment,
-  });
-
-  // Core initialization logic
   const initializePanel = async () => {
     try {
-      await initializeDB();          // Initialize IndexedDB
-      await loadCurrentStates();     // Load and apply saved states
-      initFeatures();                // Attach event listeners to features
+      // append HTML components
+      const { panel, buttons, modalNav, tts, magnifier } =
+        genAndCachedDOMElements();
+      appendGenHTML(panelLocation, panel);
+      appendGenHTML(panelLocation, buttons);
+      appendGenHTML(panelLocation, magnifier);
+      // appendGenHTML(panelLocation, tts);
+      // appendGenHTML(buttonLocation, modalNav);
 
-      
+      /**
+       * initialize drag and drop functionality for main feature buttons
+       */
+      initFeatBtnsDragAndDrop();
+
+      /**
+       * Inittialize magnifier clone page functionality
+       */
+
+     
+
+
+      /**
+       * Apply theme
+       * theme: light, dark, default
+       * NOTE: allow user to provide a path for a custome theme
+       */
+      applyTheme(theme);
+
+      /**
+       * Initialize the environment
+       * enviroments include development, production and testing
+       */
+      initializeEnvironment(environment);
+
+      /**
+       * Initialize the database on page load for all panel features
+       */
+      await initializeDB();
+
+      /**
+       * Load current states on page load for all panel feature features
+       * base on last saved state
+       */
+      await loadCurrentStates();
+
+      /**
+       * Initialize features on page load for panel feature based features
+       */
+      initFeatures();
+
+      /**
+       * Initialize the language selector widget
+       */
+      initializeGTranslate("lang-dropdown-menu", {
+        languages: language || [
+          "en",
+          "fr",
+          "de",
+          "it",
+          "es",
+          "ja",
+          "ru",
+          "zh-CN",
+          "zh-TW",
+          "ar",
+          "bn",
+        ],
+      });
+
+      /**
+       * controls the visibility of the dropdown menu
+       */
+      toggleClassName({
+        btnId: "dropdown-btn",
+        classHolder: "lang-dropdown-menu",
+        className: "is-open",
+        aria: true,
+      });
+
+      /**
+       * Handler access panel interactions
+       * incude open and close functionality for the panel
+       * include shortcuts for closing the panel using the escape key
+       */
+      toggleAccessiblePanel({
+        target: "accessibility-panel",
+        trigger: "a11y-feat-access-btn",
+        closeButton: "a11y-close-btn",
+      });
+
+      /**
+       * Handler access panel interactions
+       * provide the hability to move access panel across the page view port
+       */
+      handleDragging(
+        document.getElementById("a11y-access-panel"),
+        document.getElementById("drag-icon")
+      );
     } catch (error) {
       console.error("Error during initialization:", error);
     }
   };
 
-  // Ensure DOM is ready before initializing
+  /**
+   * await for the DOM to be fully loaded
+   */
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initializePanel);
   } else {

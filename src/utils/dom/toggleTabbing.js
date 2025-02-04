@@ -1,6 +1,6 @@
 /**
  * Toggles tabbing for focusable elements within a container.
- * @param {HTMLElement} container - The container element (e.g., the panel) to manage focusability.
+ * @param {HTMLElement} container - The container element (  the panel) to manage focusability.
  * @param {boolean} isEnabled - Whether to enable or disable tabbing within the container.
  */
 export const toggleTabbing = (container, isEnabled) => {
@@ -21,7 +21,9 @@ export const toggleTabbing = (container, isEnabled) => {
     "[tabindex]:not([tabindex='-1'])",
   ];
 
-  const focusableElements = container.querySelectorAll(focusableSelectors.join(","));
+  const focusableElements = container.querySelectorAll(
+    focusableSelectors.join(",")
+  );
 
   focusableElements.forEach((element) => {
     if (isEnabled) {
