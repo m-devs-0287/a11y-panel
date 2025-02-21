@@ -6,45 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accessibility Panel</title>
   <!-- Add your styles -->
-  <link rel="stylesheet" href="./test.css">
-  <link rel="stylesheet" href="./page.css">
   <link rel="stylesheet" href="./src/styles.css">
-
 </head>
 
 <body>
   <!-- application container -->
   <div id="panel-container"></div>
-
-  <a id="main-header" href="#main-content" class="skip-link">Skip to Main Content</a>
-  <header class="header">
-    <nav class="nav">
-      <h1>Example Header</h1>
-      <ul class="nav-links">
-        <li><a href="#home" data-tooltip="Go to Home">Home</a></li>
-        <li><a href="#about" data-tooltip="Learn About Us">About</a></li>
-        <li><a href="#services" data-tooltip="View Our Services">Services</a></li>
-        <li><a href="#contact" data-tooltip="Get in Touch">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main id="main-content">
-
-
-    <!-- testing component -->
-    <div id="theme-tester" class="theme-container">
-      <h1 data-tooltip="This is a tooltip">Theme Tester</h1>
-      <p>This is a simple component to test light, dark, and high contrast themes.</p>
-      <button id="toggle-theme" class="theme-btn">Toggle Theme</button>
-    </div>
-
-    <a href="#" data-tooltip="This is a link" style="display: block;">links after testing</a>
-    <button data-tooltip="This is a tooltip">Hover over me</button>
-    <span data-tooltip="Another tooltip example">Hover here</span>
-  </main>
-
-
-  
   <!-- Accessibility Panel -->
   <script type="module">
     import { initAccessibilityPanel } from './src/index.js';

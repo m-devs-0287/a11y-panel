@@ -15,3 +15,8 @@ export * from "./helpers/debugMode.js";
 export * from "./helpers/setFeatureProperty.js";
 export * from "./helpers/updateCheckboxState.js";
 export * from "./helpers/setFeatureClass.js";
+
+/**
+ * Not all utils functions are currently included on this file
+ * working on it ........
+ */

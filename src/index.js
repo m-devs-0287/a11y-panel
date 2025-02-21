@@ -16,16 +16,7 @@
  * - Enable keyboard interactions and shortcuts for opening, closing, and navigating the panel.
  * - Handle panel visibility and ARIA attributes for screen reader support.
  *
- * Dependencies:
- * - Core modules like `initFeatures`, `initializeDB`, and `applyTheme` are responsible for configuring
- *   the panel's environment, state, and visual design.
- * - Utility functions manage drag-and-drop behavior, HTML injection, and class toggling.
- * - Event handlers and listeners handle user interactions and accessibility shortcuts.
  *
- * Note:
- * The panel is designed to work with asynchronous data loading, ensuring components are
- * initialized sequentially without errors. Proper error handling is included to catch and log any
- * initialization failures.
  */
 
 import { initFeatures } from "./features/initFeatures.js";
@@ -39,13 +30,14 @@ import { appendGenHTML, handleDragging } from "./utils/index.js";
 import { toggleAccessiblePanel } from "./utils/dom/toggleAccessiblePanel.js";
 import initializeEnvironment from "./enviroments/index.js";
 import initFeatBtnsDragAndDrop from "./utils/events/initFeatBtnsDragAndDrop.js";
-import { initMagnifier } from "./utils/dom/initMagnifier.js";
-import { observeClass } from "./utils/dom/observeClass.js";
+// import { initMagnifier } from "./utils/dom/initMagnifier.js";
+// import { observeClass } from "./utils/dom/observeClass.js";
 
 /**
  *
- * List of functions here should not be deleted from the file directories
- *
+ * Functions included on this comment should not yet be deleted
+ * working with them for other features
+ * 
  * import {handlePanelInteractions} from "./utils/index.js";
  * import registerKeyboardShortcut from "./utils/events/registerKeyboardShortcut.js";
  * import handleTextToSpeech from "./utils/events/handleTextToSpeech.js";
@@ -56,6 +48,7 @@ import { observeClass } from "./utils/dom/observeClass.js";
  *
  *
  */
+
 
 /**
  * Initializes the Accessibility Panel.
@@ -79,9 +72,9 @@ export const initAccessibilityPanel = ({
       // append HTML components
       const { panel, buttons, modalNav, tts, magnifier } =
         genAndCachedDOMElements();
-      appendGenHTML(panelLocation, panel);
-      appendGenHTML(panelLocation, buttons);
-      appendGenHTML(panelLocation, magnifier);
+        appendGenHTML(panelLocation, panel);
+        appendGenHTML(panelLocation, buttons);
+        appendGenHTML(panelLocation, magnifier);
       // appendGenHTML(panelLocation, tts);
       // appendGenHTML(buttonLocation, modalNav);
 
@@ -89,13 +82,6 @@ export const initAccessibilityPanel = ({
        * initialize drag and drop functionality for main feature buttons
        */
       initFeatBtnsDragAndDrop();
-
-      /**
-       * Inittialize magnifier clone page functionality
-       */
-
-     
-
 
       /**
        * Apply theme
