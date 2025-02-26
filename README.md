@@ -106,9 +106,9 @@ This **Accessibility Tools Component** provides users with essential features fo
 1. Include the required **CSS** and **JavaScript** files using the following CDN links:
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cbs-accessibility-panel@1.0.1/dist/styles.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cbs-accessibility-panel@1.0.2/dist/styles.min.css">
 
-<script src="https://cdn.jsdelivr.net/npm/cbs-accessibility-panel@1.0.1/dist/index.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/cbs-accessibility-panel@1.0.2/dist/index.min.js"></script>
 <script>AccessibilityPanel.initAccessibilityPanel({});</script>
 ```
 
