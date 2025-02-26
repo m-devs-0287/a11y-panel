@@ -1,209 +1,206 @@
-
 :root {
-  --color-1: #bbbbbb;
-  --color-2: #67c1ff;
-  --color-3: #121212;
-  --color-4: #2a2a2a;
-  --color-5: #e3e3e3;
-  --color-6: #4da8ff;
-  --color-7: #101010;
-  --color-8: #888888;
-  --color-9: #67c1ffc5;
+  --a11y-color-1: #bbbbbb;
+  --a11y-color-2: #67c1ff;
+  --a11y-color-3: #121212;
+  --a11y-color-4: #2a2a2a;
+  --a11y-color-5: #e3e3e3;
+  --a11y-color-6: #4da8ff;
+  --a11y-color-7: #101010;
+  --a11y-color-8: #888888;
+  --a11y-color-9: #67c1ffc5;
 
   /* base */
-  --background-color: var(--color-3);
-  --border: var(--color-1);
-  --focus-border-color: var(--color-2);
+  --a11y-background-color: var(--a11y-color-3);
+  --a11y-border: var(--a11y-color-1);
+  --a11y-focus-border-color: var(--a11y-color-2);
 
-  --access-panel-background-color: var(--color-4);
-  --access-panel-color: var(--color-3);
-  --access-panel-border-color: transparent;
+  --a11y-access-panel-background-color: var(--a11y-color-4);
+  --a11y--a11y--access-panel-color: var(--a11y-color-3);
+  --a11y--a11y--access-panel-border-color: transparent;
 
-  --access-panel-btn-background-color: var(--color-6);
-  --access-panel-btn-color: var(--color-3);
-  --access-panel-btn-border-color: transparent;
-  --access-panel-btn-hover-background-color: var(--color-9);
-  --access-panel-btn-hover-color: var(--color-3);
-  --access-panel-btn-hover-border-color: transparent;
+  --a11y--access-panel-btn-background-color: var(--a11y-color-6);
+  --a11y-access-panel-btn-color: var(--a11y-color-3);
+  --a11y-access-panel-btn-border-color: transparent;
+  --a11y-access-panel-btn-hover-background-color: var(--a11y-color-9);
+  --a11y-access-panel-btn-hover-color: var(--a11y-color-3);
+  --a11y-access-panel-btn-hover-border-color: transparent;
 
-  --access-panel-drag-btn-background-color: transparent;
-  --access-panel-drag-btn-color: var(--color-5);
-  --access-panel-drag-btn-border-color: transparent;
-  --access-panel-drag-btn-hover-background-color: transparent;
-  --access-panel-drag-btn-hover-color: var(--color-2);
-  --access-panel-drag-btn-hover-border-color: transparent;
+  --a11y-access-panel-drag-btn-background-color: transparent;
+  --a11y-access-panel-drag-btn-color: var(--a11y-color-5);
+  --a11y-access-panel-drag-btn-border-color: transparent;
+  --a11y-access-panel-drag-btn-hover-background-color: transparent;
+  --a11y-access-panel-drag-btn-hover-color: var(--a11y-color-2);
+  --a11y-access-panel-drag-btn-hover-border-color: transparent;
 
   /* buttons */
-  --btn-background-color: var(--color-4);
-  --btn-border-color: transparent;
-  --btn-color: var(--color-5);
-  --btn-hover-background-color: var(--color-2);
-  --btn-hover-border-color: var(--color-2);
-  --btn-hover-color: var(--color-3);
-  --btn-active-background-color: var(--color-2);
-  --btn-active-border-color: var(--color-2);
-  --btn-active-color: var(--color-3);
+  --a11y-btn-background-color: var(--a11y-color-4);
+  --a11y-btn-border-color: transparent;
+  --a11y-btn-color: var(--a11y-color-5);
+  --a11y-btn-hover-background-color: var(--a11y-color-2);
+  --a11y-btn-hover-border-color: var(--a11y-color-2);
+  --a11y-btn-hover-color: var(--a11y-color-3);
+  --a11y-btn-active-background-color: var(--a11y-color-2);
+  --a11y-btn-active-border-color: var(--a11y-color-2);
+  --a11y-btn-active-color: var(--a11y-color-3);
 
   /* checkboxes */
-  --checkbox-track-color: var(--color-8);
-  --checkbox-track-active-color: var(--color-3);
-  --checkbox-thumb-color: var(--color-3);
-  --checkbox-thumb-active-color: var(--color-6);
+  --a11y-checkbox-track-color: var(--a11y-color-8);
+  --a11y-checkbox-track-active-color: var(--a11y-color-3);
+  --a11y-checkbox-thumb-color: var(--a11y-color-3);
+  --a11y-checkbox-thumb-active-color: var(--a11y-color-6);
 
   /* labels */
-  --label-color: var(--color-5);
-  --label-active-color: var(--color-2);
+  --a11y-label-color: var(--a11y-color-5);
+  --a11y-label-active-color: var(--a11y-color-2);
 
   /* text */
-  --text-color: var(--color-1);
-  --text-hover-color: var(--color-2);
-  --text-active-color: var(--color-2);
+  --a11y-text-color: var(--a11y-color-1);
+  --a11y-text-hover-color: var(--a11y-color-2);
+  --a11y-text-active-color: var(--a11y-color-2);
 
   /* text list */
-  --list-color: var(--color-7);
-  --list-hover-color: var(--color-3);
-  --list-active-color: var(--color-4);
-  --list-background-color: var(--color-4);
-  --list-hover-background-color: var(--color-9);
-  --list-active-background-color: var(--color-2);
+  --a11y-list-color: var(--a11y-color-7);
+  --a11y-list-hover-color: var(--a11y-color-3);
+  --a11y-list-active-color: var(--a11y-color-4);
+  --a11y-list-background-color: var(--a11y-color-4);
+  --a11y-list-hover-background-color: var(--a11y-color-9);
+  --a11y-list-active-background-color: var(--a11y-color-2);
 }
 
-
-
 body.high-contrast {
-  --color-1: #bbbbbb;
-  --color-2: #67c1ff;
-  --color-3: #121212;
-  --color-4: #2a2a2a;
-  --color-5: #e3e3e3;
-  --color-6: #4da8ff;
-  --color-7: #101010;
-  --color-8: #888888;
-  --color-9: #67c1ffc5;
+  --a11y-color-1: #bbbbbb;
+  --a11y-color-2: #67c1ff;
+  --a11y-color-3: #121212;
+  --a11y-color-4: #2a2a2a;
+  --a11y-color-5: #e3e3e3;
+  --a11y-color-6: #4da8ff;
+  --a11y-color-7: #101010;
+  --a11y-color-8: #888888;
+  --a11y-color-9: #67c1ffc5;
   /* base */
-  --background-color: var(--color-3);
-  --border: var(--color-1);
-  --focus-border-color: var(--color-2);
+  --a11y-background-color: var(--a11y-color-3);
+  --a11y-border: var(--a11y-color-1);
+  --a11y-focus-border-color: var(--a11y-color-2);
 
-  --access-panel-background-color: var(--color-4);
-  --access-panel-color: var(--color-3);
-  --access-panel-border-color: transparent;
+  --a11y-access-panel-background-color: var(--a11y-color-4);
+  --a11y--a11y--access-panel-color: var(--a11y-color-3);
+  --a11y--a11y--access-panel-border-color: transparent;
 
-  --access-panel-btn-background-color: var(--color-6);
-  --access-panel-btn-color: var(--color-3);
-  --access-panel-btn-border-color: transparent;
-  --access-panel-btn-hover-background-color: var(--color-9);
-  --access-panel-btn-hover-color: var(--color-3);
-  --access-panel-btn-hover-border-color: transparent;
+  --a11y--access-panel-btn-background-color: var(--a11y-color-6);
+  --a11y-access-panel-btn-color: var(--a11y-color-3);
+  --a11y-access-panel-btn-border-color: transparent;
+  --a11y-access-panel-btn-hover-background-color: var(--a11y-color-9);
+  --a11y-access-panel-btn-hover-color: var(--a11y-color-3);
+  --a11y-access-panel-btn-hover-border-color: transparent;
 
-  --access-panel-drag-btn-background-color: transparent;
-  --access-panel-drag-btn-color: var(--color-5);
-  --access-panel-drag-btn-border-color: transparent;
-  --access-panel-drag-btn-hover-background-color: transparent;
-  --access-panel-drag-btn-hover-color: var(--color-2);
-  --access-panel-drag-btn-hover-border-color: transparent;
+  --a11y-access-panel-drag-btn-background-color: transparent;
+  --a11y-access-panel-drag-btn-color: var(--a11y-color-5);
+  --a11y-access-panel-drag-btn-border-color: transparent;
+  --a11y-access-panel-drag-btn-hover-background-color: transparent;
+  --a11y-access-panel-drag-btn-hover-color: var(--a11y-color-2);
+  --a11y-access-panel-drag-btn-hover-border-color: transparent;
 
   /* buttons */
-  --btn-background-color: var(--color-4);
-  --btn-border-color: transparent;
-  --btn-color: var(--color-5);
-  --btn-hover-background-color: var(--color-2);
-  --btn-hover-border-color: var(--color-2);
-  --btn-hover-color: var(--color-3);
-  --btn-active-background-color: var(--color-2);
-  --btn-active-border-color: var(--color-2);
-  --btn-active-color: var(--color-3);
+  --a11y-btn-background-color: var(--a11y-color-4);
+  --a11y-btn-border-color: transparent;
+  --a11y-btn-color: var(--a11y-color-5);
+  --a11y-btn-hover-background-color: var(--a11y-color-2);
+  --a11y-btn-hover-border-color: var(--a11y-color-2);
+  --a11y-btn-hover-color: var(--a11y-color-3);
+  --a11y-btn-active-background-color: var(--a11y-color-2);
+  --a11y-btn-active-border-color: var(--a11y-color-2);
+  --a11y-btn-active-color: var(--a11y-color-3);
 
   /* checkboxes */
-  --checkbox-track-color: var(--color-8);
-  --checkbox-track-active-color: var(--color-3);
-  --checkbox-thumb-color: var(--color-3);
-  --checkbox-thumb-active-color: var(--color-6);
+  --a11y-checkbox-track-color: var(--a11y-color-8);
+  --a11y-checkbox-track-active-color: var(--a11y-color-3);
+  --a11y-checkbox-thumb-color: var(--a11y-color-3);
+  --a11y-checkbox-thumb-active-color: var(--a11y-color-6);
 
   /* labels */
-  --label-color: var(--color-5);
-  --label-active-color: var(--color-2);
+  --a11y-label-color: var(--a11y-color-5);
+  --a11y-label-active-color: var(--a11y-color-2);
 
   /* text */
-  --text-color: var(--color-1);
-  --text-hover-color: var(--color-2);
-  --text-active-color: var(--color-2);
+  --a11y-text-color: var(--a11y-color-1);
+  --a11y-text-hover-color: var(--a11y-color-2);
+  --a11y-text-active-color: var(--a11y-color-2);
 
   /* text list */
-  --list-color: var(--color-7);
-  --list-hover-color: var(--color-3);
-  --list-active-color: var(--color-4);
-  --list-background-color: var(--color-4);
-  --list-hover-background-color: var(--color-9);
-  --list-active-background-color: var(--color-2);
+  --a11y-list-color: var(--a11y-color-7);
+  --a11y-list-hover-color: var(--a11y-color-3);
+  --a11y-list-active-color: var(--a11y-color-4);
+  --a11y-list-background-color: var(--a11y-color-4);
+  --a11y-list-hover-background-color: var(--a11y-color-9);
+  --a11y-list-active-background-color: var(--a11y-color-2);
 }
 
 @media (prefers-contrast: high) {
   :root {
-    --color-1: #bbbbbb;
-    --color-2: #67c1ff;
-    --color-3: #121212;
-    --color-4: #2a2a2a;
-    --color-5: #e3e3e3;
-    --color-6: #4da8ff;
-    --color-7: #101010;
-    --color-8: #888888;
-    --color-9: #67c1ffc5;
+    --a11y-color-1: #bbbbbb;
+    --a11y-color-2: #67c1ff;
+    --a11y-color-3: #121212;
+    --a11y-color-4: #2a2a2a;
+    --a11y-color-5: #e3e3e3;
+    --a11y-color-6: #4da8ff;
+    --a11y-color-7: #101010;
+    --a11y-color-8: #888888;
+    --a11y-color-9: #67c1ffc5;
     /* base */
-    --background-color: var(--color-3);
-    --border: var(--color-1);
-    --focus-border-color: var(--color-2);
+    --a11y-background-color: var(--a11y-color-3);
+    --a11y-border: var(--a11y-color-1);
+    --a11y-focus-border-color: var(--a11y-color-2);
 
-    --access-panel-background-color: var(--color-4);
-    --access-panel-color: var(--color-3);
-    --access-panel-border-color: transparent;
+    --a11y-access-panel-background-color: var(--a11y-color-4);
+    --a11y--a11y--access-panel-color: var(--a11y-color-3);
+    --a11y--a11y--access-panel-border-color: transparent;
 
-    --access-panel-btn-background-color: var(--color-6);
-    --access-panel-btn-color: var(--color-3);
-    --access-panel-btn-border-color: transparent;
-    --access-panel-btn-hover-background-color: var(--color-9);
-    --access-panel-btn-hover-color: var(--color-3);
-    --access-panel-btn-hover-border-color: transparent;
+    --a11y--access-panel-btn-background-color: var(--a11y-color-6);
+    --a11y-access-panel-btn-color: var(--a11y-color-3);
+    --a11y-access-panel-btn-border-color: transparent;
+    --a11y-access-panel-btn-hover-background-color: var(--a11y-color-9);
+    --a11y-access-panel-btn-hover-color: var(--a11y-color-3);
+    --a11y-access-panel-btn-hover-border-color: transparent;
 
-    --access-panel-drag-btn-background-color: transparent;
-    --access-panel-drag-btn-color: var(--color-5);
-    --access-panel-drag-btn-border-color: transparent;
-    --access-panel-drag-btn-hover-background-color: transparent;
-    --access-panel-drag-btn-hover-color: var(--color-2);
-    --access-panel-drag-btn-hover-border-color: transparent;
+    --a11y-access-panel-drag-btn-background-color: transparent;
+    --a11y-access-panel-drag-btn-color: var(--a11y-color-5);
+    --a11y-access-panel-drag-btn-border-color: transparent;
+    --a11y-access-panel-drag-btn-hover-background-color: transparent;
+    --a11y-access-panel-drag-btn-hover-color: var(--a11y-color-2);
+    --a11y-access-panel-drag-btn-hover-border-color: transparent;
 
     /* buttons */
-    --btn-background-color: var(--color-4);
-    --btn-border-color: transparent;
-    --btn-color: var(--color-5);
-    --btn-hover-background-color: var(--color-2);
-    --btn-hover-border-color: var(--color-2);
-    --btn-hover-color: var(--color-3);
-    --btn-active-background-color: var(--color-2);
-    --btn-active-border-color: var(--color-2);
-    --btn-active-color: var(--color-3);
+    --a11y-btn-background-color: var(--a11y-color-4);
+    --a11y-btn-border-color: transparent;
+    --a11y-btn-color: var(--a11y-color-5);
+    --a11y-btn-hover-background-color: var(--a11y-color-2);
+    --a11y-btn-hover-border-color: var(--a11y-color-2);
+    --a11y-btn-hover-color: var(--a11y-color-3);
+    --a11y-btn-active-background-color: var(--a11y-color-2);
+    --a11y-btn-active-border-color: var(--a11y-color-2);
+    --a11y-btn-active-color: var(--a11y-color-3);
 
     /* checkboxes */
-    --checkbox-track-color: var(--color-8);
-    --checkbox-track-active-color: var(--color-3);
-    --checkbox-thumb-color: var(--color-3);
-    --checkbox-thumb-active-color: var(--color-6);
+    --a11y-checkbox-track-color: var(--a11y-color-8);
+    --a11y-checkbox-track-active-color: var(--a11y-color-3);
+    --a11y-checkbox-thumb-color: var(--a11y-color-3);
+    --a11y-checkbox-thumb-active-color: var(--a11y-color-6);
 
     /* labels */
-    --label-color: var(--color-5);
-    --label-active-color: var(--color-2);
+    --a11y-label-color: var(--a11y-color-5);
+    --a11y-label-active-color: var(--a11y-color-2);
 
     /* text */
-    --text-color: var(--color-1);
-    --text-hover-color: var(--color-2);
-    --text-active-color: var(--color-2);
+    --a11y-text-color: var(--a11y-color-1);
+    --a11y-text-hover-color: var(--a11y-color-2);
+    --a11y-text-active-color: var(--a11y-color-2);
 
     /* text list */
-    --list-color: var(--color-7);
-    --list-hover-color: var(--color-3);
-    --list-active-color: var(--color-4);
-    --list-background-color: var(--color-4);
-    --list-hover-background-color: var(--color-9);
-    --list-active-background-color: var(--color-2);
+    --a11y-list-color: var(--a11y-color-7);
+    --a11y-list-hover-color: var(--a11y-color-3);
+    --a11y-list-active-color: var(--a11y-color-4);
+    --a11y-list-background-color: var(--a11y-color-4);
+    --a11y-list-hover-background-color: var(--a11y-color-9);
+    --a11y-list-active-background-color: var(--a11y-color-2);
   }
 }

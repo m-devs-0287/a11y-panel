@@ -1,8 +1,8 @@
 :root {
-  --test-background-color: var(--color-4);
-  /* --test-text-color: var(--color-5); */
-  --test-button-background: var(--color-6);
-  --test-button-text: var(--color-3);
+  --test-background-color: var(--a11y-color-4);
+  /* --test-text-color: var(--a11y-color-5); */
+  --test-button-background: var(--a11y-color-6);
+  --test-button-text: var(--a11y-color-3);
 }
 
 /* Light Theme (Default) */
@@ -29,21 +29,21 @@
 }
 
 .theme-btn:hover {
-  background-color: var(--color-2);
+  background-color: var(--a11y-color-2);
 }
 
 /* Dark Theme */
 body.dark-mode {
-  --test-background-color: var(--color-4);
-  --test-button-background: var(--color-2);
-  --test-button-text: var(--color-3);
+  --test-background-color: var(--a11y-color-4);
+  --test-button-background: var(--a11y-color-2);
+  --test-button-text: var(--a11y-color-3);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --test-background-color: var(--color-3);
-    --test-button-background: var(--color-2);
-    --test-button-text: var(--color-3);
+    --test-background-color: var(--a11y-color-3);
+    --test-button-background: var(--a11y-color-2);
+    --test-button-text: var(--a11y-color-3);
   }
 }
 
@@ -65,5 +65,5 @@ body.high-contrast {
 }
 
 body {
-  background-color: var(--color-8);
+  background-color: var(--a11y-color-8);
 }
