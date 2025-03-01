@@ -25,11 +25,9 @@ export const resetChildrenOrder = async ({ containers, isLoadMode }) => {
       // Load saved state from IndexedDB, fallback to default if not available
       const savedState = await stateManager.getState(featureKey);
       order = savedState?.property || featureConfig.defaultState?.property;
-      console.log(`Loaded order from saved state for "${featureKey}":`, order);
     } else {
       // Use default state for reset mode
       order = featureConfig.defaultState?.property;
-      console.log(`Using default order for "${featureKey}":`, order);
     }
 
     if (!order) {
@@ -46,8 +44,6 @@ export const resetChildrenOrder = async ({ containers, isLoadMode }) => {
         console.warn(`Item with data-id '${id}' not found.`);
       }
     });
-
-    console.log(`Container '${containerId}' reordered for feature key: ${featureKey}`);
 
     // Save updated state to IndexedDB if not in load mode
     if (!isLoadMode) {

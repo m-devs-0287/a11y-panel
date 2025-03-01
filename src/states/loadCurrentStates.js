@@ -14,9 +14,10 @@ export const loadCurrentStates = async () => {
       key,
       { hasState, defaultState, action, btnId, btnTexts, dynamicText, containerId },
     ] of Object.entries(features)) {
+
       // Check if the feature requires state
       if (!hasState) {
-        console.log(`Skipping feature "${key}" as it doesn't require state.`);
+        // console.log(`Skipping feature "${key}" as it doesn't require state.`);
         continue;
       }
 

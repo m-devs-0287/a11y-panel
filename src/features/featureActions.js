@@ -19,7 +19,7 @@ const properties = {
     "spacing-tighter",
     "spacing-tight",
   ],
-  textAlign: ["text-left", "text-center", "text-right"],
+  textAlign: ["text-center", "text-right"],
   dyslexiaFonts: ["dyslexia-font-regular"],
   highContrast: ["high-contrast"],
   setTooltip: ["tooltip"],
@@ -105,7 +105,7 @@ export const setLetterSpacing = async (isLoadMode) => {
     dataName: "letterSpacing",
     btnId: "letter-spacing",
     classes: properties.lettersSpacing,
-    btnTexts: ["", "wide", "wider", "widest", "tighter", "tight"],
+    btnTexts: ["", "Wide", "Wider", "Widest", "TighTer", "Tight"],
     isLoadMode: isLoadMode,
   });
 };
@@ -115,7 +115,7 @@ export const setTextAlign = async (isLoadMode) => {
     dataName: "textAlign",
     btnId: "text-align",
     classes: properties.textAlign,
-    btnTexts: ["", "left", "Center", "Right"],
+    btnTexts: ["Left", "Center", "Right"],
     isLoadMode: isLoadMode,
   });
 };
