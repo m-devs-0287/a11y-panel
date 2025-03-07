@@ -13,6 +13,7 @@
   /* base */
   --a11y-background-color: var(--a11y-color-3);
   --a11y-border: var(--a11y-color-1);
+  --a11y-parent-components-border: var(--a11y-color-8);
   --a11y-focus-border-color: var(--a11y-color-2);
 
   --a11y-access-panel-background-color: var(--a11y-color-4);

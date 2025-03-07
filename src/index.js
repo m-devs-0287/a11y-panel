@@ -41,7 +41,7 @@ import initFeatBtnsDragAndDrop from "./utils/events/initFeatBtnsDragAndDrop.js";
  *
  * Functions included on this comment should not yet be deleted
  * working with them for other features
- * 
+ *
  * import {handlePanelInteractions} from "./utils/index.js";
  * import registerKeyboardShortcut from "./utils/events/registerKeyboardShortcut.js";
  * import handleTextToSpeech from "./utils/events/handleTextToSpeech.js";
@@ -52,7 +52,6 @@ import initFeatBtnsDragAndDrop from "./utils/events/initFeatBtnsDragAndDrop.js";
  *
  *
  */
-
 
 /**
  * Initializes the Accessibility Panel.
@@ -66,7 +65,7 @@ import initFeatBtnsDragAndDrop from "./utils/events/initFeatBtnsDragAndDrop.js";
  * @param {boolean} [options.debugMode=false] - Enables debug logs.
  */
 export const initAccessibilityPanel = ({
-  panelLocation = "#panel-container",
+  panelLocation = "body",
   theme,
   environment = "production",
   language,
@@ -76,9 +75,9 @@ export const initAccessibilityPanel = ({
       // append HTML components
       const { panel, buttons, modalNav, tts, magnifier } =
         genAndCachedDOMElements();
-        appendGenHTML(panelLocation, panel);
-        appendGenHTML(panelLocation, buttons);
-        appendGenHTML(panelLocation, magnifier);
+      appendGenHTML(panelLocation, panel);
+      appendGenHTML(panelLocation, buttons);
+      // appendGenHTML(panelLocation, magnifier);
       // appendGenHTML(panelLocation, tts);
       // appendGenHTML(buttonLocation, modalNav);
 

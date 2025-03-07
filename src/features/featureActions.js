@@ -6,8 +6,8 @@ import { resetChildrenOrder } from "../utils/events/resetChildrenOrder.js";
 import initializeTooltips from "../utils/dom/tooltipEvents.js";
 import { initMagnifier } from "../utils/dom/initMagnifier.js";
 
-const darkThemeColors = ["#ffffff", "#008000", "#0040c9", "#c400b3"];
-const lightThemeColors = ["#000000", "#008000", "#0040c9", "#c400b3"];
+const darkThemeColors = ["#181A1C","#274C80","#484097","#0E5756","#4D4B4B"];
+const lightThemeColors = ["#181A1C","#274C80","#484097","#0E5756","#4D4B4B"];
 
 const properties = {
   fontSizes: ["text-lg", "text-xl", "text-2xl"],
@@ -74,7 +74,7 @@ export const setFontSize = async (isLoadMode) => {
     dataName: "fontSize",
     btnId: "font-size",
     classes: properties.fontSizes,
-    btnTexts: ["", "Large", "XL", "XXL"],
+    btnTexts: ["", "(Large)", "(XL)", "(XXL)"],
     isLoadMode: isLoadMode,
   });
 };
@@ -84,7 +84,7 @@ export const setFontWeight = async (isLoadMode) => {
     dataName: "fontWeight",
     btnId: "font-weight",
     classes: properties.fontsWeight,
-    btnTexts: ["", "Bold"],
+    btnTexts: ["", "(Bold)"],
     isLoadMode: isLoadMode,
   });
 };
@@ -96,7 +96,7 @@ export const setTextColor = async (isLoadMode) => {
     transition: "all 0.3s ease-in-out",
     btnId: "text-color",
     isLoadMode: isLoadMode,
-    btnText: ["", ": Green", ": Blue", ": Magenta"],
+    btnText: ["",   "(Protanomaly)","(Deuteranopia)","(Tritanopia)","(Acromatopsia)"],
   });
 };
 
@@ -105,7 +105,7 @@ export const setLetterSpacing = async (isLoadMode) => {
     dataName: "letterSpacing",
     btnId: "letter-spacing",
     classes: properties.lettersSpacing,
-    btnTexts: ["", "Wide", "Wider", "Widest", "TighTer", "Tight"],
+    btnTexts: ["", "(Wide)", "(Wider)", "(Widest)", "(Tighter)", "(Tight)"],
     isLoadMode: isLoadMode,
   });
 };
@@ -115,7 +115,7 @@ export const setTextAlign = async (isLoadMode) => {
     dataName: "textAlign",
     btnId: "text-align",
     classes: properties.textAlign,
-    btnTexts: ["Left", "Center", "Right"],
+    btnTexts: ["(Left)", "(Center)", "(Right)"],
     isLoadMode: isLoadMode,
   });
 };
@@ -124,7 +124,7 @@ export const setLineHeight = async (isLoadMode) => {
     dataName: "lineHeight",
     btnId: "line-height",
     classes: properties.lineHeight,
-    btnTexts: ["", "1:2", "1:4", "1:6", "1:8", "2:0"],
+    btnTexts: ["", "(1:2)", "(1:4)", "(1:6)", "(1:8)", "(2:0)"],
     isLoadMode: isLoadMode,
   });
 };
@@ -134,7 +134,7 @@ export const setDyslexiaFont = async (isLoadMode) => {
     dataName: "dyslexiaFont",
     btnId: "dyslexia-font",
     classes: properties.dyslexiaFonts,
-    btnTexts: ["", "On"],
+    btnTexts: ["", "(On)"],
     isLoadMode: isLoadMode,
   });
 };
@@ -144,7 +144,7 @@ export const setHighContrast = async (isLoadMode) => {
     dataName: "highContrast",
     btnId: "high-contrast",
     classes: properties.highContrast, // Add the high contrast class here
-    btnTexts: ["", "On"],
+    btnTexts: ["", "(On)"],
     isLoadMode: isLoadMode,
   });
 };
@@ -154,7 +154,7 @@ export const setTooltip = async (isLoadMode) => {
     dataName: "tooltip",
     btnId: "tooltip",
     classes: ["show-tooltips"],
-    btnTexts: ["", "On"],
+    btnTexts: ["", "(On)"],
     isLoadMode: isLoadMode,
   });
   initializeTooltips();

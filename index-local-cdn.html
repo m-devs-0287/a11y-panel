@@ -6,12 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accessibility Panel</title>
   <!-- Add your styles -->
-  <link rel="stylesheet" href="./src/css/styles.css">
+  <link rel="stylesheet" href="dist/styles.min.css">
 </head>
 
 <body>
-
-  <h1>Accessibility Panel</h1>
+  <h1>Local CDN | Accessibility Panel</h1>
 
   <section id="backtotop" style="height: 100vh;">
     <h2>section 1</h2>
@@ -35,13 +34,10 @@
       architecto.</p>
   </section>
 
-  <!-- application container -->
-  <div id="panel-container"></div>
-  <!-- Accessibility Panel -->
-  <script type="module">
-    import { initAccessibilityPanel } from './src/index.js';
-    initAccessibilityPanel({});
-  </script>
+<script src="dist/index.min.js"></script>
+<script>AccessibilityPanel.initAccessibilityPanel({
+
+});</script>
 </body>
 
 </html>

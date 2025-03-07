@@ -21,33 +21,34 @@ export const accessPanel = {
       ],
     },
 
+    // {
+    //   type: "button",
+    //   id: "text-to-speech",
+    //   className: "a11y-btn a11y-feat-access-btn text-to-speech",
+    //   "aria-label": "TTS Button",
+    //   attributes: {
+    //     "data-tooltip": "Text to Speech (TTS) \n  ctrl + alt + s  ",
+    //   },
+    //   children: [
+    //     {
+    //       type: "span",
+    //       className: "a11y-sr-only",
+    //       label: "TTS Button",
+    //     },
+    //     {
+    //       type: "span",
+    //       attributes: { "aria-hidden": "true" },
+    //       children: [iconSets.voiceIcon()],
+    //     },
+    //   ],
+    // },
     {
-      type: "button",
-      id: "text-to-speech",
-      className: "a11y-btn a11y-feat-access-btn text-to-speech",
-      "aria-label": "TTS Button",
-      attributes: {
-        "data-tooltip": "Text to Speech (TTS) \n  ctrl + alt + s  ",
-      },
-      children: [
-        {
-          type: "span",
-          className: "a11y-sr-only",
-          label: "TTS Button",
-        },
-        {
-          type: "span",
-          attributes: { "aria-hidden": "true" },
-          children: [iconSets.voiceIcon()],
-        },
-      ],
-    },
-    {
-      type: "button",
+      type: "a",
       id: "accessibility-up-button",
-      className: "a11y-btn a11y-feat-access-btn",
+      className: "access-panel-btn",
+      href:"#",
       "aria-label": "Accessibility Button",
-      attributes: { "data-tooltip": "Back to Top" },
+      attributes: { "data-tooltip": "Back to top"},
       children: [
         {
           type: "span",
@@ -57,6 +58,7 @@ export const accessPanel = {
 
         {
           type: "span",
+          className:"icon",
           attributes: { "aria-hidden": "true" },
           children: [iconSets.arrowUpIcon()],
         },
@@ -65,8 +67,7 @@ export const accessPanel = {
     {
       type: "button",
       id: "a11y-feat-access-btn",
-      className: "a11y-btn a11y-feat-access-btn",
-      title: "click to access accessibility panel",
+      className: "access-panel-btn",
       attributes: {
         "aria-expanded": "false",
         "aria-controls": "accessibility-panel",
@@ -79,6 +80,7 @@ export const accessPanel = {
         },
         {
           type: "span",
+          className:"icon",
           attributes: { "aria-hidden": "true" },
           children: [iconSets.accessibilityIcon()],
         },

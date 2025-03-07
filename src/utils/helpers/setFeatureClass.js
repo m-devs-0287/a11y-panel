@@ -67,17 +67,6 @@ export const setFeatureClass = async ({
 
     }
 
-    // // Update the button text and active class
-    // const button = document.getElementById(btnId);
-
-    // if (!button) {
-    //   console.log("Button with id of ", btnId, " not found.");
-    //   return;
-    // }
-
-    // const buttonText = btnTexts[newIndex] || btnId.replace(/-/g, " ");
-    // button.innerText = buttonText;
-
     return updatedState;
   } catch (error) {
     console.error(`Error in setFeatureClass for "${dataName}":`, error);
