@@ -27,43 +27,17 @@ import { initFeatures } from "./features/initFeatures.js";
 import { initializeDB } from "./db/initializeDB.js";
 import { loadCurrentStates } from "./states/loadCurrentStates.js";
 import { initializeGTranslate } from "./utils/events/languageSelector.js";
-import { toggleClassName } from "./utils/index.js";
 import { applyTheme } from "./themes/js/applyTheme.js";
 import { genAndCachedDOMElements } from "./cache/cachePanel.js";
 import { appendGenHTML, handleDragging } from "./utils/index.js";
-import { toggleAccessiblePanel } from "./utils/dom/toggleAccessiblePanel.js";
 import initializeEnvironment from "./enviroments/index.js";
 import initFeatBtnsDragAndDrop from "./utils/events/initFeatBtnsDragAndDrop.js";
-// import { initMagnifier } from "./utils/dom/initMagnifier.js";
-// import { observeClass } from "./utils/dom/observeClass.js";
+import { toggleUIElement } from "./utils/dom/toggleUIElement.js";
+import { switchButtonsAccessibilityEnhancements } from "./utils/events/updateSwitchAccessibility.js";
+import { handleDropdown } from "./utils/events/handleDropdown.js";
 
-/**
- *
- * Functions included on this comment should not yet be deleted
- * working with them for other features
- *
- * import {handlePanelInteractions} from "./utils/index.js";
- * import registerKeyboardShortcut from "./utils/events/registerKeyboardShortcut.js";
- * import handleTextToSpeech from "./utils/events/handleTextToSpeech.js";
- * import handleDragAndDropFeatures from "./utils/dom/handleDragAndDropFeatures.js";
- * import { handleDragAndDrop } from "./utils/events/dragAndDrop.js";
- * import { initTTS } from "./utils/dom/initTTS.js";
- * import { observeClass } from "./utils/dom/observeClass.js";
- *
- *
- */
 
-/**
- * Initializes the Accessibility Panel.
- * @param {Object} options - Configuration options for the panel.
- * @param {string} options.panelLocation - Selector for the panel container.
- * @param {string} options.buttonLocation - Selector for the button container.
- * @param {string} [options.theme="default"] - Theme to apply.
- * @param {boolean} [options.active=true] - Whether the panel is active by default.
- * @param {string} [options.environment="production"] - Environment mode.
- * @param {string} [options.language="en"] - Default language for the panel.
- * @param {boolean} [options.debugMode=false] - Enables debug logs.
- */
+
 export const initAccessibilityPanel = ({
   panelLocation = "body",
   theme,
@@ -137,21 +111,22 @@ export const initAccessibilityPanel = ({
       /**
        * controls the visibility of the dropdown menu
        */
-      toggleClassName({
-        btnId: "dropdown-btn",
-        classHolder: "lang-dropdown-menu",
+      handleDropdown({
+        button: "dropdown-btn",
+        menu: "lang-dropdown-menu",
         className: "is-open",
-        aria: true,
       });
-
+      
       /**
        * Handler access panel interactions
        * incude open and close functionality for the panel
        * include shortcuts for closing the panel using the escape key
        */
-      toggleAccessiblePanel({
-        target: "accessibility-panel",
-        trigger: "a11y-feat-access-btn",
+
+      toggleUIElement({
+        button: "a11y-open-btn",
+        uiElement: "accessibility-panel",
+        toggleClass: "active",
         closeButton: "a11y-close-btn",
       });
 
@@ -163,6 +138,12 @@ export const initAccessibilityPanel = ({
         document.getElementById("a11y-access-panel"),
         document.getElementById("drag-icon")
       );
+
+      /**
+       *
+       * Accessibility enhancements for checkbox switches
+       */
+      switchButtonsAccessibilityEnhancements();
     } catch (error) {
       console.error("Error during initialization:", error);
     }

@@ -38,7 +38,7 @@ export const features = {
     hasState: true,
     defaultState: { value: false },
     action: setDarkMode,
-    btnTexts: ["Off", "On"], // For boolean states
+    btnTexts: ["Off", "On"], 
   },
 
   textToSpeech: {
@@ -46,7 +46,7 @@ export const features = {
     hasState: false,
     defaultState: { value: true },
     action: setTTS,
-    btnTexts: ["Off", "On"], // For boolean states
+    btnTexts: ["Off", "On"], 
   },
 
   animations: {
@@ -54,14 +54,14 @@ export const features = {
     hasState: true,
     defaultState: { value: true },
     action: setAnimations,
-    btnTexts: ["Disabled", "Enabled"], // For boolean states
+    btnTexts: ["Disabled", "Enabled"], 
   },
   showIcons: {
     btnId: "toggle-icons-checkbox",
     hasState: true,
     defaultState: { value: true },
     action: setShowBtnIcons,
-    btnTexts: ["Disabled", "Enabled"], // For boolean states
+    btnTexts: ["Disabled", "Enabled"], 
   },
 
   fontSize: {
@@ -142,7 +142,7 @@ export const features = {
     containerId: "a11y-right-container",
     hasState: true,
     defaultState: {
-      property: ["5", "6", "7", "8", "9"],
+      property: ["5", "6", "7", "8"],
     },
     action: () => {},
   },

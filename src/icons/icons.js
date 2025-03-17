@@ -89,8 +89,8 @@ export const iconSets = {
     height: "32",
     viewBox: "0 0 24 24",
     style: {
-      width: "100%", // SVG scales to fill the container's width
-      height: "auto", // Maintains aspect ratio
+      width: "100%",
+      height: "auto",
     },
     children: [
       {

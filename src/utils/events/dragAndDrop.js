@@ -27,9 +27,11 @@ const enableDragOver = (container) => {
   container.addEventListener("dragover", (event) => {
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
-    
+
     // Remove 'drag-over' from all other items
-    container.querySelectorAll(".drag-over").forEach(el => el.classList.remove("drag-over"));
+    container
+      .querySelectorAll(".drag-over")
+      .forEach((el) => el.classList.remove("drag-over"));
 
     // Determine closest child where drop should occur
     const target = getClosestChild(container, event.clientY);
@@ -47,14 +49,19 @@ const enableDragOver = (container) => {
       }
     } else {
       // If no valid target, move dragged item to the top
-      if (container.children.length > 0 && event.clientY < container.children[0].getBoundingClientRect().top) {
+      if (
+        container.children.length > 0 &&
+        event.clientY < container.children[0].getBoundingClientRect().top
+      ) {
         container.prepend(draggedElement);
       }
     }
   });
 
   container.addEventListener("dragleave", () => {
-    container.querySelectorAll(".drag-over").forEach(el => el.classList.remove("drag-over"));
+    container
+      .querySelectorAll(".drag-over")
+      .forEach((el) => el.classList.remove("drag-over"));
   });
 };
 
@@ -62,23 +69,31 @@ const enableDragOver = (container) => {
 const enableDropOnContainer = (container) => {
   container.addEventListener("drop", (event) => {
     event.preventDefault();
-    container.querySelectorAll(".drag-over").forEach(el => el.classList.remove("drag-over"));
+    container
+      .querySelectorAll(".drag-over")
+      .forEach((el) => el.classList.remove("drag-over"));
   });
 };
 
 // Helper to get the closest child element to the cursor's Y position
 const getClosestChild = (container, y) => {
   const children = Array.from(container.children).filter(
-    (child) => child !== draggedElement && child.getAttribute("draggable") === "true"
+    (child) =>
+      child !== draggedElement && child.getAttribute("draggable") === "true"
   );
 
   if (children.length === 0) return null;
 
-  return children.reduce((closest, child) => {
-    const box = child.getBoundingClientRect();
-    const offset = y - box.top - box.height / 2;
-    return offset < 0 && offset > closest.offset ? { offset, element: child } : closest;
-  }, { offset: Number.NEGATIVE_INFINITY }).element;
+  return children.reduce(
+    (closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      return offset < 0 && offset > closest.offset
+        ? { offset, element: child }
+        : closest;
+    },
+    { offset: Number.NEGATIVE_INFINITY }
+  ).element;
 };
 
 // Main function to handle drag and drop between two containers

@@ -3,8 +3,11 @@ import { iconSets } from "../icons/icons.js";
 export const panelUI = {
   id: "accessibility-panel",
   attributes: {
-    role: "menu",
-    "aria-hidden": "true",
+    "role": "menu",
+    "aria-hidden": true,
+    "tabindex": "-1",
+    "aria-label": "accessibility panel",
+    "role": "navigation",
   },
   className: "accessibility-panel no-feature panel",
   children: [
@@ -23,135 +26,105 @@ export const panelUI = {
                   id: "accessibility-heading",
                   label: "Accessibility Tools",
                 },
-                {
-                  type: "button",
-                  id: "a11y-close-btn",
-                  className: "a11y-btn a11y-close-btn",
-                  ariaLabel: "Close Accessibility Panel",
-                  children: [
-                    {
-                      type: "span",
-                      className: "a11y-sr-only",
-                      label: "Close",
-                    },
-                    {
-                      type: "span",
-                      className: " a11y-close-icon",
-                      children: [iconSets.closeIcon()],
-                    },
-                  ],
-                },
               ],
             },
+            // Switches
             {
-              className: "check-boxes",
+              className: "switchers-container",
               children: [
                 {
-                  className: "toggle-mode-container",
+                  type: "label",
+                  className: "toggle-switch",
                   children: [
                     {
-                      type: "label",
-                      attributes: { for: "toggle-dark-mode-checkbox" },
-                      className: "toggle-mode",
-                      id: "toggle-dark-mode",
-                      children: [
-                        {
-                          type: "input",
-                          id: "toggle-dark-mode-checkbox",
-                          attributes: { type: "checkbox" },
-                        },
-                        {
-                          type: "span",
-                          className: "slider",
-                        },
-                        {
-                          type: "span",
-                          label: "Dark Mode",
-                        },
-                      ],
+                      type: "input",
+                      id: "toggle-dark-mode-checkbox",
+                      attributes: {
+                        "type": "checkbox",
+                        "role": "switch",
+                        "aria-checked": "false",
+                        "aria-label": "Dark Mode",
+                      },
+                    },
+                    { type: "span", className: "slider" },
+                    {
+                      type: "span",
+                      className: "switch-text",
+                      label: "Dark Mode",
                     },
                   ],
                 },
                 {
-                  className: "toggle-mode-container",
+                  type: "label",
+                  className: "toggle-switch disabled",
                   children: [
                     {
-                      type: "label",
-                      attributes: { for: "toggle-animation-checkbox" },
-                      className: "toggle-mode",
-                      id: "toggle-animation",
-                      children: [
-                        {
-                          type: "input",
-                          id: "toggle-animation-checkbox",
-                          attributes: { type: "checkbox" },
-                        },
-                        {
-                          type: "span",
-                          className: "slider",
-                        },
-                        {
-                          type: "span",
-                          label: "Animations",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  className: "toggle-mode-container disabled",
-                  children: [
-                    {
-                      type: "label",
-                      attributes: { for: "toggle-tts-checkbox" },
-                      className: "toggle-mode",
+                      type: "input",
                       id: "toggle-tts",
-                      children: [
-                        {
-                          type: "input",
-                          id: "toggle-tts-checkbox",
-                          attributes: { type: "checkbox" },
-                        },
-                        {
-                          type: "span",
-                          className: "slider",
-                        },
-                        {
-                          type: "span",
-                          label: "Text Reader",
-                        },
-                      ],
+                      attributes: {
+                        "type": "checkbox",
+                        "role": "switch",
+                        "aria-checked": "false",
+                        "aria-label": "text reader",
+                        "aria-hidden": "true",
+                        "tabindex": "-1",
+                      },
+                    },
+                    { type: "span", className: "slider" },
+                    {
+                      type: "span",
+                      className: "switch-text",
+                      label: "Text Reader",
                     },
                   ],
                 },
                 {
-                  className: "toggle-mode-container",
+                  type: "label",
+                  className: "toggle-switch",
                   children: [
                     {
-                      type: "label",
-                      attributes: { for: "toggle-icons-checkbox" },
-                      className: "toggle-mode",
-                      id: "toggle-animation",
-                      children: [
-                        {
-                          type: "input",
-                          id: "toggle-icons-checkbox",
-                          attributes: { type: "checkbox" },
-                        },
-                        {
-                          type: "span",
-                          className: "slider",
-                        },
-                        {
-                          type: "span",
-                          label: "Panel Icons",
-                        },
-                      ],
+                      type: "input",
+                      id: "toggle-animation-checkbox",
+                      attributes: {
+                        "type": "checkbox",
+                        "role": "switch",
+                        "aria-checked": "false",
+                        "aria-label": "animations",
+                      },
+                    },
+                    { type: "span", className: "slider" },
+                    {
+                      type: "span",
+                      className: "switch-text",
+                      label: "Animations",
+                    },
+                  ],
+                },
+                {
+                  type: "label",
+                  className: "toggle-switch",
+                  children: [
+                    {
+                      type: "input",
+                      id: "toggle-icons-checkbox",
+                      attributes: {
+                        "type": "checkbox",
+                        "role": "switch",
+                        "aria-checked": "false",
+                        "aria-label": "panel icons",
+                      },
+                    },
+                    { type: "span", className: "slider" },
+                    {
+                      type: "span",
+                      className: "switch-text",
+                      label: "Panel Icons",
                     },
                   ],
                 },
               ],
             },
+            // Lang button
             {
               className: "lang-dropdown-container",
               children: [
@@ -165,14 +138,15 @@ export const panelUI = {
                       className: "dropdown-btn",
                       ariaLabel: "Change Language",
                       attributes: {
-                        "aria-haspopup": "menu",
-                        "aria-expanded": "false",
                         "aria-controls": "lang-dropdown-menu",
+                        "aria-haspopup": "true",
+                        "aria-label": "language",
+                        "aria-expanded": "false",
                       },
                       children: [
                         {
                           type: "span",
-                          label: "English",
+                          label: "Language",
                         },
                         {
                           type: "span",
@@ -181,12 +155,13 @@ export const panelUI = {
                         },
                       ],
                     },
+                    // lang menu
                     {
                       className: "lang-dropdown-menu",
                       id: "lang-dropdown-menu",
                       attributes: {
-                        role: "menu",
-                        "aria-hidden": "true",
+                        "role": "menu",
+                        "tabindex": "-1"
                       },
                       children: [
                         {
@@ -197,7 +172,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "en",
-                                className:
+                                "className":
                                   "glink nturl notranslate gt-current-lang",
                               },
                               label: "English",
@@ -207,7 +182,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "fr",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "French",
                             },
@@ -216,7 +191,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "de",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "German",
                             },
@@ -225,7 +200,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "it",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "Italian",
                             },
@@ -234,7 +209,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "es",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "Spanish",
                             },
@@ -243,7 +218,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "ja",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "Japanese",
                             },
@@ -252,7 +227,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "ru",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "Russian",
                             },
@@ -261,7 +236,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "zh-CN",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "Chinese (Simplified)",
                             },
@@ -270,7 +245,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "zh-TW",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "Chinese (Traditional)",
                             },
@@ -279,7 +254,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "ar",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "Arabic",
                             },
@@ -288,7 +263,7 @@ export const panelUI = {
                               href: "#",
                               attributes: {
                                 "data-gt-lang": "bn",
-                                className: "glink nturl notranslate",
+                                "className": "glink nturl notranslate",
                               },
                               label: "Bengali",
                             },
@@ -296,6 +271,13 @@ export const panelUI = {
                         },
                       ],
                     },
+                    {
+                      id: "live-region",
+                      className:"a11y-sr-only",
+                      attributes: {
+                        "aria-live": "polite"
+                      }
+                    }
                   ],
                 },
               ],
@@ -321,7 +303,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "Increase Font Size",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 0 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 0,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -337,7 +323,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "Increase Letter Spacing",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 1 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 1,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -353,7 +343,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "Adjust Font Weight",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 2 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 2,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -369,7 +363,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "Switch to Dyslexia-Friendly Font",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 3 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 3,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -385,7 +383,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "Chnage Text",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 4 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 4,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -408,7 +410,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "Enable High Contrast Mode",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 5 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 5,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -424,7 +430,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "Adjust Text Alignment",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 6 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 6,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -440,7 +450,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "change Line Height",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 7 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 7,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -456,7 +470,11 @@ export const panelUI = {
                       className: "a11y-btn a11y-feat-btn a11y-draggable",
                       ariaLabel: "Enable or Disable Tooltips",
                       type: "button",
-                      attributes: { draggable: "true", "data-id": 8 },
+                      attributes: {
+                        "draggable": "true",
+                        "data-id": 8,
+                        "aria-live": "polite",
+                      },
                       children: [
                         {
                           type: "span",
@@ -483,7 +501,6 @@ export const panelUI = {
                     //     { type: "span", label: "Magnifier" },
                     //   ],
                     // },
-    
                   ],
                 },
               ],
@@ -526,6 +543,24 @@ export const panelUI = {
                   children: [iconSets.resetLayoutIcon()],
                 },
                 { type: "span", label: "Reset Layout" },
+              ],
+            },
+            {
+              type: "button",
+              id: "a11y-close-btn",
+              className: "a11y-btn a11y-close-btn",
+              ariaLabel: "Close Accessibility Panel",
+              children: [
+                {
+                  type: "span",
+                  className: "a11y-sr-only",
+                  label: "Close",
+                },
+                {
+                  type: "span",
+                  className: " a11y-close-icon",
+                  children: [iconSets.closeIcon()],
+                },
               ],
             },
           ],
