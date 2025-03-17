@@ -159,7 +159,7 @@ body.high-contrast {
   top: 10px;
   right: 20px;
 
- &:hover {
+  &:hover {
     background-color: var(--a11y-btn-hover-background-color);
     color: var(--a11y-btn-hover-color);
     border-color: var(--a11y-btn-hover-border-color);
@@ -171,7 +171,7 @@ body.high-contrast {
     font-size: 1em;
   }
 }
-.access-panel-btn{
+.access-panel-btn {
   border-radius: 100%;
   width: 34px;
   height: 34px;
@@ -183,13 +183,12 @@ body.high-contrast {
   border: 1px solid var(--a11y-access-panel-btn-border-color);
   padding: 0;
   box-sizing: border-box;
-  
-  .icon{
+
+  .icon {
     display: flex;
     align-items: center;
     border-radius: 100%;
   }
-  
 }
 
 .a11y-btn.a11y-feat-btn {
@@ -267,10 +266,9 @@ body.high-contrast {
     }
 
     .dropdown-btn {
-      display: flex;
+      display: flex !important;
       justify-content: space-between;
       align-items: center;
-      justify-content: space-between;
       padding: 0 1rem;
       border-radius: 3px;
       border: var(--a11y-btn-border-color) 1px solid;
@@ -308,24 +306,24 @@ body.high-contrast {
       div,
       gtranslate_wrapper,
       .gt_container--6wb20p {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
 
         .glink,
         .nturl,
         .notranslate {
-          display: flex;
+          display: flex !important;
           padding: 5px;
           margin: 2px;
           border: 2px solid transparent;
 
           background: transparent;
           color: var(--a11y-text-color);
-         
+
           &:hover,
-          &:focus{
+          &:focus {
             outline-offset: 1px;
-            border-color: var( --a11y-btn-hover-border-color);
+            border-color: var(--a11y-btn-hover-border-color);
           }
         }
         .gt-current-lang {
@@ -371,7 +369,7 @@ body.high-contrast {
 .a11y-access-panel {
   position: fixed;
   bottom: 20px;
-  right: 30px; 
+  right: 30px;
   width: 100px;
   height: 100px;
 
@@ -882,5 +880,5 @@ body.leading-2-0 *:not(.accessibility-panel *) {
 .switch-text {
   display: inline-block;
   white-space: nowrap;
-  color: var(--a11y-text-color)
+  color: var(--a11y-text-color);
 }

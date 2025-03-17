@@ -1,6 +1,6 @@
 {
   "name": "cbs-accessibility-panel",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A customizable accessibility panel for web applications, enhancing UI accessibility and usability.",
   "main": "dist/index.min.js",
   "module": "src/index.js",
